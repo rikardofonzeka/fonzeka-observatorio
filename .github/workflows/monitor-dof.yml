@@ -1,23 +1,25 @@
-name: fonzeka - Monitor DOF 0.2.3 (fecha anticipada)
+name: fonzeka - Monitor DOF 0.2.4 (bandeja documental)
 
 on:
   workflow_dispatch:
     inputs:
       modo:
-        description: 'normal = edición vigente/histórica; avance = fecha futura seleccionada'
+        description: 'normal = vigente/historica; avance = fecha futura'
         required: true
         default: normal
         type: choice
         options:
           - normal
           - avance
+
       fecha:
-        description: 'YYYY-MM-DD; avance admite 1-7 días futuros, auto = mañana'
+        description: 'YYYY-MM-DD; en avance admite 1-7 dias futuros; auto = fecha automatica'
         required: true
         default: auto
         type: string
+
       dias_retroceso:
-        description: '0-30 días; solo fecha auto y modo normal'
+        description: 'Retroceso de 0-30 dias; solo modo normal con fecha auto'
         required: true
         default: '0'
         type: choice
@@ -30,7 +32,11 @@ on:
           - '30'
 
   schedule:
+    # Consulta ordinaria: lunes a viernes, 08:23 Monterrey
     - cron: '23 14 * * 1-5'
+
+    # Avance nocturno: lunes a viernes, 21:00 Monterrey
+    # En UTC corresponde a martes a sabado, 03:00
     - cron: '0 3 * * 2-6'
 
 permissions:
@@ -68,11 +74,17 @@ jobs:
           fi
 
           if [[ "$MODO" == "avance" ]]; then
+            if [[ "$DIAS_RETROCESO" != "0" ]]; then
+              echo "Error: modo avance no admite retroceso"
+              exit 1
+            fi
+
             python scripts/monitor_dof.py \
               --preview-tomorrow \
               --date "$FECHA" \
               --timezone America/Monterrey \
               --output salida_monitor
+
           else
             if [[ "$FECHA" != "auto" && "$DIAS_RETROCESO" != "0" ]]; then
               echo "Error: fecha explicita y retroceso no pueden combinarse"
@@ -86,6 +98,12 @@ jobs:
               --output salida_monitor
           fi
 
+      - name: Generar bandeja documental
+        if: success()
+        run: |
+          python scripts/generar_bandeja.py \
+            --input salida_monitor
+
       - name: Conservar resultados
         if: always()
         uses: actions/upload-artifact@v4
@@ -95,12 +113,22 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      - name: Persistir historial confirmado
-        if: success() && !(inputs.modo == 'avance') && github.event.schedule != '0 3 * * 2-6'
+      - name: Persistir historial tecnico
+        if: success()
+        env:
+          MODO: ${{ inputs.modo || 'normal' }}
+          CRON_ACTUAL: ${{ github.event.schedule }}
         run: |
-          git config user.name "github-actions[bot]"
+          if [[ "$MODO" == "avance" || "$CRON_ACTUAL" == "0 3 * * 2-6" ]]; then
+            echo "Consulta anticipada: no se modifica historial"
+            exit 0
+          fi
+
+          git config user.name "fonzeka-monitor[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add data/monitor_dof_state.json
+
           if ! git diff --cached --quiet; then
             git commit -m "chore: actualizar historial tecnico DOF [skip ci]"
             git push origin HEAD:main
