@@ -1,6 +1,49 @@
 {
   "schema": 2,
-  "documents": {},
+  "documents": {
+    "5801554": {
+      "codigo": "5801554",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5801554&fecha=20/10/2026",
+      "titulo": "Código de Ética de las personas servidoras públicas de la Comisión Federal de Electricidad y personas empleadas de las Empresas Filiales.",
+      "fecha_primera_deteccion": "2026-10-20T18:31:05.283552+00:00",
+      "ultima_revision": "2026-10-20T18:31:05.283552+00:00",
+      "fecha_indice": "2026-10-20",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "229611b378332aa6540919eb32648a9c15ae554b92ab483ba43de9fa09e8c665",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-20T18:31:05.283552+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Código de Ética de las personas servidoras públicas de la Comisión Federal de Electricidad y personas empleadas de las Empresas Filiales.",
+          "sha256_contenido": "229611b378332aa6540919eb32648a9c15ae554b92ab483ba43de9fa09e8c665"
+        }
+      ]
+    },
+    "5801555": {
+      "codigo": "5801555",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5801555&fecha=20/10/2026",
+      "titulo": "Código de Conducta de la Comisión Federal de Electricidad y sus Empresas Filiales.",
+      "fecha_primera_deteccion": "2026-10-20T18:31:05.283552+00:00",
+      "ultima_revision": "2026-10-20T18:31:05.283552+00:00",
+      "fecha_indice": "2026-10-20",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "d0c3c3058e1ac3d54ffbf1b00e81c69ab8eb4f0259467c13bd4f9302776a632c",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-20T18:31:05.283552+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Código de Conducta de la Comisión Federal de Electricidad y sus Empresas Filiales.",
+          "sha256_contenido": "d0c3c3058e1ac3d54ffbf1b00e81c69ab8eb4f0259467c13bd4f9302776a632c"
+        }
+      ]
+    }
+  },
   "runs": [
     {
       "fecha_consultada": "2026-10-19",
@@ -49,6 +92,20 @@
       "total_enlaces_detectados": 3,
       "candidatos_palabra_clave": 0,
       "nuevos": 0,
+      "cambios_de_titulo": 0,
+      "cambios_de_contenido": 0,
+      "sin_verificacion_documental": 0,
+      "advertencia": "Deteccion automatica no equivale a evaluacion juridica ni aprobacion editorial."
+    },
+    {
+      "fecha_consultada": "2026-10-20",
+      "consulta_utc": "2026-10-20T18:31:05.283552+00:00",
+      "url_indice": "https://dof.gob.mx/index.php?year=2026&month=10&day=20",
+      "estado": "OK_EXTRACCION_PRELIMINAR",
+      "tipo_consulta": "EDICION_DEL_DIA",
+      "total_enlaces_detectados": 15,
+      "candidatos_palabra_clave": 2,
+      "nuevos": 2,
       "cambios_de_titulo": 0,
       "cambios_de_contenido": 0,
       "sin_verificacion_documental": 0,
