@@ -9,6 +9,7 @@ import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from html.parser import HTMLParser
 from html import unescape
 
@@ -123,11 +124,40 @@ def run(date_str,output,state_path,html_file=None,fetch_documents=True):
     print(json.dumps(status,ensure_ascii=False))
     return 0 if status['estado'].startswith('OK_') else 1
 
+def resolve_date(date_arg='auto', timezone='America/Monterrey', days_back=0, now=None):
+    """Usa el calendario de la zona objetivo, no el día UTC del servidor."""
+    if days_back < 0 or days_back > 30:
+        raise ValueError('--days-back debe estar entre 0 y 30')
+    try:
+        tz = ZoneInfo(timezone)
+    except ZoneInfoNotFoundError as exc:
+        raise ValueError(f'Zona horaria desconocida: {timezone}') from exc
+    instant = now or dt.datetime.now(dt.timezone.utc)
+    if instant.tzinfo is None:
+        raise ValueError('now debe tener zona horaria')
+    today_local = instant.astimezone(tz).date()
+    if date_arg == 'auto':
+        day = today_local - dt.timedelta(days=days_back)
+    else:
+        if days_back:
+            raise ValueError('No combines --date con --days-back')
+        day = dt.date.fromisoformat(date_arg)
+        if day > today_local:
+            raise ValueError('No se permiten fechas futuras del calendario local')
+    return day.isoformat(), today_local.isoformat()
+
 def main():
     p=argparse.ArgumentParser()
-    p.add_argument('--date',default=dt.datetime.now(dt.timezone(dt.timedelta(hours=-6))).date().isoformat())
+    p.add_argument('--date',default='auto',help='YYYY-MM-DD para consultar una edición concreta, o auto para fecha local')
+    p.add_argument('--timezone',default='America/Monterrey',help='Zona IANA; por defecto America/Monterrey')
+    p.add_argument('--days-back',type=int,default=0,help='Días anteriores a la fecha local (0-30); solo con --date auto')
     p.add_argument('--output',default='salida_monitor');p.add_argument('--state',default='data/monitor_dof_state.json')
     p.add_argument('--html-file');p.add_argument('--no-fetch-documents',action='store_true')
     a=p.parse_args()
-    return run(a.date,Path(a.output),Path(a.state),a.html_file,not a.no_fetch_documents)
+    try:
+        day,today_local=resolve_date(a.date,a.timezone,a.days_back)
+    except ValueError as exc:
+        p.error(str(exc))
+    print(json.dumps({'zona_horaria':a.timezone,'fecha_local_actual':today_local,'fecha_indice_solicitada':day,'fecha_explicita':a.date!='auto','dias_retroceso':a.days_back},ensure_ascii=False))
+    return run(day,Path(a.output),Path(a.state),a.html_file,not a.no_fetch_documents)
 if __name__=='__main__':sys.exit(main())
