@@ -16,6 +16,7 @@ concurrency:
 jobs:
   consultar:
     runs-on: ubuntu-latest
+
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -49,3 +50,4 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "chore: actualizar historial técnico DOF [skip ci]"
             git push origin HEAD:main
+          fi
