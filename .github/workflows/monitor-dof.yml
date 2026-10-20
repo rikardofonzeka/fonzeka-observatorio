@@ -1,16 +1,23 @@
-
-name: fonzeka - Monitor DOF 0.2.2 (selector de fecha)
+name: fonzeka - Monitor DOF 0.2.3 (fecha anticipada)
 
 on:
   workflow_dispatch:
     inputs:
-      fecha:
-        description: 'Fecha YYYY-MM-DD o auto (fecha local Monterrey)'
+      modo:
+        description: 'normal = edición vigente/histórica; avance = fecha futura seleccionada'
         required: true
-        default: 'auto'
+        default: normal
+        type: choice
+        options:
+          - normal
+          - avance
+      fecha:
+        description: 'YYYY-MM-DD; avance admite 1-7 días futuros, auto = mañana'
+        required: true
+        default: auto
         type: string
       dias_retroceso:
-        description: 'Dias anteriores a la fecha local; usar 0 con fecha explicita'
+        description: '0-30 días; solo fecha auto y modo normal'
         required: true
         default: '0'
         type: choice
@@ -21,8 +28,10 @@ on:
           - '7'
           - '15'
           - '30'
+
   schedule:
     - cron: '23 14 * * 1-5'
+    - cron: '0 3 * * 2-6'
 
 permissions:
   contents: write
@@ -34,6 +43,7 @@ concurrency:
 jobs:
   consultar:
     runs-on: ubuntu-latest
+
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -48,18 +58,33 @@ jobs:
 
       - name: Consultar DOF
         env:
+          MODO: ${{ inputs.modo || 'normal' }}
           FECHA: ${{ inputs.fecha || 'auto' }}
           DIAS_RETROCESO: ${{ inputs.dias_retroceso || '0' }}
+          CRON_ACTUAL: ${{ github.event.schedule }}
         run: |
-          if [[ "$FECHA" != "auto" && "$DIAS_RETROCESO" != "0" ]]; then
-            echo "Error: con fecha explicita el retroceso debe ser 0"
-            exit 1
+          if [[ "$CRON_ACTUAL" == "0 3 * * 2-6" ]]; then
+            MODO="avance"
           fi
-          python scripts/monitor_dof.py \
-            --date "$FECHA" \
-            --timezone America/Monterrey \
-            --days-back "$DIAS_RETROCESO" \
-            --output salida_monitor
+
+          if [[ "$MODO" == "avance" ]]; then
+            python scripts/monitor_dof.py \
+              --preview-tomorrow \
+              --date "$FECHA" \
+              --timezone America/Monterrey \
+              --output salida_monitor
+          else
+            if [[ "$FECHA" != "auto" && "$DIAS_RETROCESO" != "0" ]]; then
+              echo "Error: fecha explicita y retroceso no pueden combinarse"
+              exit 1
+            fi
+
+            python scripts/monitor_dof.py \
+              --date "$FECHA" \
+              --timezone America/Monterrey \
+              --days-back "$DIAS_RETROCESO" \
+              --output salida_monitor
+          fi
 
       - name: Conservar resultados
         if: always()
@@ -70,10 +95,10 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      - name: Persistir historial tecnico
-        if: success()
+      - name: Persistir historial confirmado
+        if: success() && !(inputs.modo == 'avance') && github.event.schedule != '0 3 * * 2-6'
         run: |
-          git config user.name "fonzeka-monitor[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/monitor_dof_state.json
           if ! git diff --cached --quiet; then
