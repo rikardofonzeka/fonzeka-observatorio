@@ -15,7 +15,7 @@ from pathlib import Path
 KEYWORDS = ('electricidad', 'eléctric', 'energia', 'energía', 'generaci', 'transmisión',
             'distribución', 'interconexión', 'cenace', 'comisión nacional de energía',
             'sector eléctrico', 'sener', 'comisión federal de electricidad')
-BASE = 'https://www.dof.gob.mx/'
+BASE = 'https://dof.gob.mx/'
 
 class DOFLinks(HTMLParser):
     def __init__(self):
