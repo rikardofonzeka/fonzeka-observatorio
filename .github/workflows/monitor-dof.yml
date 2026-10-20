@@ -1,0 +1,40 @@
+name: fonzeka - Monitor DOF (prueba)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 14 * * 1-5'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: monitor-dof
+  cancel-in-progress: false
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Probar analizador
+        run: python -m unittest discover -s tests -v
+
+      - name: Consultar DOF
+        run: python scripts/monitor_dof.py --output salida_monitor
+
+      - name: Conservar resultados
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dof-consulta-${{ github.run_number }}
+          path: salida_monitor/
+          if-no-files-found: warn
+          retention-days: 30
