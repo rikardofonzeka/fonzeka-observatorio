@@ -138,6 +138,20 @@
       "cambios_de_contenido": 0,
       "sin_verificacion_documental": 0,
       "advertencia": "Deteccion automatica no equivale a evaluacion juridica ni aprobacion editorial."
+    },
+    {
+      "fecha_consultada": "2026-10-23",
+      "consulta_utc": "2026-10-23T18:26:56.462467+00:00",
+      "url_indice": "https://dof.gob.mx/index.php?year=2026&month=10&day=23",
+      "estado": "OK_EXTRACCION_PRELIMINAR",
+      "tipo_consulta": "EDICION_DEL_DIA",
+      "total_enlaces_detectados": 16,
+      "candidatos_palabra_clave": 0,
+      "nuevos": 0,
+      "cambios_de_titulo": 0,
+      "cambios_de_contenido": 0,
+      "sin_verificacion_documental": 0,
+      "advertencia": "Deteccion automatica no equivale a evaluacion juridica ni aprobacion editorial."
     }
   ]
 }
