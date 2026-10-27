@@ -42,6 +42,69 @@
           "sha256_contenido": "d0c3c3058e1ac3d54ffbf1b00e81c69ab8eb4f0259467c13bd4f9302776a632c"
         }
       ]
+    },
+    "5802184": {
+      "codigo": "5802184",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5802184&fecha=27/10/2026",
+      "titulo": "Acuerdo de la Comisión Nacional de Energía por el que se inicia el procedimiento administrativo de caducidad a los titulares de ciento treinta y dos permisos de comercialización de hidrocarburos, petrolíferos y petroquímicos, por presuntamente ubicarse en la hipótesis de caducidad prevista en el artículo 88, fracción I, inciso b, de la Ley del Sector Hidrocarburos.",
+      "fecha_primera_deteccion": "2026-10-27T19:28:08.227620+00:00",
+      "ultima_revision": "2026-10-27T19:28:08.227620+00:00",
+      "fecha_indice": "2026-10-27",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "7eafeee3ec0937de350023761ebab5fb8797a2eca5eea0042272b00d4e4b12d8",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-27T19:28:08.227620+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Acuerdo de la Comisión Nacional de Energía por el que se inicia el procedimiento administrativo de caducidad a los titulares de ciento treinta y dos permisos de comercialización de hidrocarburos, petrolíferos y petroquímicos, por presuntamente ubicarse en la hipótesis de caducidad prevista en el artículo 88, fracción I, inciso b, de la Ley del Sector Hidrocarburos.",
+          "sha256_contenido": "7eafeee3ec0937de350023761ebab5fb8797a2eca5eea0042272b00d4e4b12d8"
+        }
+      ]
+    },
+    "5802185": {
+      "codigo": "5802185",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5802185&fecha=27/10/2026",
+      "titulo": "Aviso por el que se da a conocer el Código de Conducta del Instituto Nacional de Electricidad y Energías Limpias.",
+      "fecha_primera_deteccion": "2026-10-27T19:28:08.227620+00:00",
+      "ultima_revision": "2026-10-27T19:28:08.227620+00:00",
+      "fecha_indice": "2026-10-27",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "7d363bdd6a5463d1ccf4f67c73c5481da78a264d9e5fa60ba1b2b83463058937",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-27T19:28:08.227620+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Aviso por el que se da a conocer el Código de Conducta del Instituto Nacional de Electricidad y Energías Limpias.",
+          "sha256_contenido": "7d363bdd6a5463d1ccf4f67c73c5481da78a264d9e5fa60ba1b2b83463058937"
+        }
+      ]
+    },
+    "5802191": {
+      "codigo": "5802191",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5802191&fecha=27/10/2026",
+      "titulo": "Tarifas Finales del Suministro Básico que deberá aplicar la Comisión Federal de Electricidad, en la modalidad de Suministradora de Servicios Básicos a sus usuarios, a partir del 1 de octubre de 2026.",
+      "fecha_primera_deteccion": "2026-10-27T19:28:08.227620+00:00",
+      "ultima_revision": "2026-10-27T19:28:08.227620+00:00",
+      "fecha_indice": "2026-10-27",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "887c6c5fa44330fa327f79430242e5ede00ae772993007fc4fd5ebbaf6d2e320",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-27T19:28:08.227620+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Tarifas Finales del Suministro Básico que deberá aplicar la Comisión Federal de Electricidad, en la modalidad de Suministradora de Servicios Básicos a sus usuarios, a partir del 1 de octubre de 2026.",
+          "sha256_contenido": "887c6c5fa44330fa327f79430242e5ede00ae772993007fc4fd5ebbaf6d2e320"
+        }
+      ]
     }
   },
   "runs": [
@@ -162,6 +225,20 @@
       "total_enlaces_detectados": 18,
       "candidatos_palabra_clave": 0,
       "nuevos": 0,
+      "cambios_de_titulo": 0,
+      "cambios_de_contenido": 0,
+      "sin_verificacion_documental": 0,
+      "advertencia": "Deteccion automatica no equivale a evaluacion juridica ni aprobacion editorial."
+    },
+    {
+      "fecha_consultada": "2026-10-27",
+      "consulta_utc": "2026-10-27T19:28:08.227620+00:00",
+      "url_indice": "https://dof.gob.mx/index.php?year=2026&month=10&day=27",
+      "estado": "OK_EXTRACCION_PRELIMINAR",
+      "tipo_consulta": "EDICION_DEL_DIA",
+      "total_enlaces_detectados": 17,
+      "candidatos_palabra_clave": 3,
+      "nuevos": 3,
       "cambios_de_titulo": 0,
       "cambios_de_contenido": 0,
       "sin_verificacion_documental": 0,
