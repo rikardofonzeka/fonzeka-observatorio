@@ -105,6 +105,27 @@
           "sha256_contenido": "887c6c5fa44330fa327f79430242e5ede00ae772993007fc4fd5ebbaf6d2e320"
         }
       ]
+    },
+    "5802362": {
+      "codigo": "5802362",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5802362&fecha=28/10/2026",
+      "titulo": "Acuerdo por el que la Secretaría de Energía emite los Lineamientos para la aprobación, actualización y vigilancia de los Organismos de Evaluación de la Conformidad que evalúan la conformidad de las Normas Oficiales Mexicanas que regulan las especificaciones de calidad de los Hidrocarburos, Petrolíferos y Petroquímicos y del registro de los laboratorios extranjeros que emitan documentos equivalentes a las Normas Oficiales Mexicanas que regulan las especificaciones de calidad.",
+      "fecha_primera_deteccion": "2026-10-28T19:38:33.111169+00:00",
+      "ultima_revision": "2026-10-28T19:38:33.111169+00:00",
+      "fecha_indice": "2026-10-28",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "08469cc9f369102b633e0c877bf7aa83f5776b1937245eabe0b6e437f222b43b",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-28T19:38:33.111169+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Acuerdo por el que la Secretaría de Energía emite los Lineamientos para la aprobación, actualización y vigilancia de los Organismos de Evaluación de la Conformidad que evalúan la conformidad de las Normas Oficiales Mexicanas que regulan las especificaciones de calidad de los Hidrocarburos, Petrolíferos y Petroquímicos y del registro de los laboratorios extranjeros que emitan documentos equivalentes a las Normas Oficiales Mexicanas que regulan las especificaciones de calidad.",
+          "sha256_contenido": "08469cc9f369102b633e0c877bf7aa83f5776b1937245eabe0b6e437f222b43b"
+        }
+      ]
     }
   },
   "runs": [
@@ -239,6 +260,20 @@
       "total_enlaces_detectados": 17,
       "candidatos_palabra_clave": 3,
       "nuevos": 3,
+      "cambios_de_titulo": 0,
+      "cambios_de_contenido": 0,
+      "sin_verificacion_documental": 0,
+      "advertencia": "Deteccion automatica no equivale a evaluacion juridica ni aprobacion editorial."
+    },
+    {
+      "fecha_consultada": "2026-10-28",
+      "consulta_utc": "2026-10-28T19:38:33.111169+00:00",
+      "url_indice": "https://dof.gob.mx/index.php?year=2026&month=10&day=28",
+      "estado": "OK_EXTRACCION_PRELIMINAR",
+      "tipo_consulta": "EDICION_DEL_DIA",
+      "total_enlaces_detectados": 16,
+      "candidatos_palabra_clave": 1,
+      "nuevos": 1,
       "cambios_de_titulo": 0,
       "cambios_de_contenido": 0,
       "sin_verificacion_documental": 0,
