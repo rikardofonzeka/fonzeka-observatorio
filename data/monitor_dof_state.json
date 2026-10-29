@@ -126,6 +126,27 @@
           "sha256_contenido": "08469cc9f369102b633e0c877bf7aa83f5776b1937245eabe0b6e437f222b43b"
         }
       ]
+    },
+    "5802463": {
+      "codigo": "5802463",
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5802463&fecha=29/10/2026",
+      "titulo": "Acuerdo por el que se emite la cuarta modificación a la Convocatoria para la atención de proyectos estratégicos de generación y almacenamiento de energía eléctrica, alineados a la planeación vinculante.",
+      "fecha_primera_deteccion": "2026-10-29T19:41:56.935839+00:00",
+      "ultima_revision": "2026-10-29T19:41:56.935839+00:00",
+      "fecha_indice": "2026-10-29",
+      "estado_editorial": "PENDIENTE_DE_REVISION",
+      "sha256_contenido": "33fedbb135921adcc4729cc0144be5e066643254ca880ebf5db2b3f6822934f1",
+      "estado_evidencia": "HUELLA_CALCULADA_NO_ARCHIVADA",
+      "historial": [
+        {
+          "fecha_utc": "2026-10-29T19:41:56.935839+00:00",
+          "eventos": [
+            "NUEVO"
+          ],
+          "titulo": "Acuerdo por el que se emite la cuarta modificación a la Convocatoria para la atención de proyectos estratégicos de generación y almacenamiento de energía eléctrica, alineados a la planeación vinculante.",
+          "sha256_contenido": "33fedbb135921adcc4729cc0144be5e066643254ca880ebf5db2b3f6822934f1"
+        }
+      ]
     }
   },
   "runs": [
@@ -272,6 +293,20 @@
       "estado": "OK_EXTRACCION_PRELIMINAR",
       "tipo_consulta": "EDICION_DEL_DIA",
       "total_enlaces_detectados": 16,
+      "candidatos_palabra_clave": 1,
+      "nuevos": 1,
+      "cambios_de_titulo": 0,
+      "cambios_de_contenido": 0,
+      "sin_verificacion_documental": 0,
+      "advertencia": "Deteccion automatica no equivale a evaluacion juridica ni aprobacion editorial."
+    },
+    {
+      "fecha_consultada": "2026-10-29",
+      "consulta_utc": "2026-10-29T19:41:56.935839+00:00",
+      "url_indice": "https://dof.gob.mx/index.php?year=2026&month=10&day=29",
+      "estado": "OK_EXTRACCION_PRELIMINAR",
+      "tipo_consulta": "EDICION_DEL_DIA",
+      "total_enlaces_detectados": 20,
       "candidatos_palabra_clave": 1,
       "nuevos": 1,
       "cambios_de_titulo": 0,
