@@ -62,6 +62,7 @@ def generar(carpeta):
             'prioridad_orientativa': nivel, 'motivo': motivo,
             'seleccionado_por_palabras_clave': bool(candidato),
             'estado_evidencia': candidato.get('estado_evidencia', 'NO_VERIFICADO'),
+            'procedencia': item.get('procedencia', []),
         })
     orden = {'ALTA': 0, 'MEDIA': 1, 'INSTITUCIONAL': 2, 'SIN_CLASIFICAR': 3}
     registros.sort(key=lambda r: (orden[r['prioridad_orientativa']], r['titulo'].casefold()))
@@ -77,14 +78,18 @@ def generar(carpeta):
              'La clasificación es orientativa a partir del título. '
              'No sustituye la lectura del documento ni la validación jurídica.', '']
     for r in registros:
+        ediciones = ', '.join(str(f.get('edicion', 'SIN_IDENTIFICAR')) for f in r['procedencia'])
         lines.append(f'- **{r["prioridad_orientativa"]}** · '
                      f'[{r["titulo"]}]({r["url"]}) · '
-                     f'código {r["codigo"]} · {r["motivo"]}')
+                     f'código {r["codigo"]} · {r["motivo"]}' +
+                     (f' · Edición: {ediciones}' if ediciones else ''))
     if not registros:
         lines.append('No se identificaron enlaces reconocibles. No implica ausencia de publicaciones.')
     (carpeta / 'bandeja.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     (carpeta / 'bandeja.json').write_text(
         json.dumps({'fecha': fecha, 'estado': estado.get('estado'), 'aviso': aviso,
+                    'indices_consultados': estado.get('indices_consultados', []),
+                    'cobertura_ediciones_enlazadas': estado.get('cobertura_ediciones_enlazadas', False),
                     'registros': registros}, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     filas = []
     for r in registros:
@@ -93,6 +98,9 @@ def generar(carpeta):
                      '</span><h2>'+html.escape(r['titulo'])+'</h2><p>'+html.escape(r['motivo'])+
                      '</p><a href="'+u+'" target="_blank" rel="noopener noreferrer">Abrir en DOF ↗</a>'+
                      '<small>Código '+html.escape(r['codigo'])+'</small></article>')
+        if r['procedencia']:
+            ediciones = ', '.join(str(f.get('edicion', 'SIN_IDENTIFICAR')) for f in r['procedencia'])
+            filas[-1] = filas[-1].replace('</article>', '<small>Edición: '+html.escape(ediciones)+'</small></article>')
     cuerpo = '\n'.join(filas) if filas else '<p>No hay enlaces reconocibles para esta fecha.</p>'
     pagina = ('<!doctype html><html lang="es"><head><meta charset="utf-8">'
               '<meta name="viewport" content="width=device-width,initial-scale=1">'

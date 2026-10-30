@@ -5,6 +5,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -130,6 +131,79 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+class EditionLinks(HTMLParser):
+    def __init__(self, day):
+        super().__init__()
+        self.day = day
+        self.editions = set()
+
+    def handle_starttag(self, tag, attrs):
+        if tag != 'a':
+            return
+        parsed = urllib.parse.urlparse(urllib.parse.urljoin(BASE, dict(attrs).get('href', '')))
+        if parsed.scheme != 'https' or parsed.netloc != 'dof.gob.mx' or parsed.path != '/index.php':
+            return
+        q = urllib.parse.parse_qs(parsed.query)
+        try:
+            date = dt.date(*(int(q[k][0]) for k in ('year', 'month', 'day')))
+        except (KeyError, ValueError, TypeError):
+            return
+        edition = q.get('edicion', [''])[0]
+        if date == self.day and re.fullmatch(r'[A-Z]{2,8}', edition):
+            self.editions.add(edition)
+
+
+def collect_editions(day, output, html_file=None):
+    """Archive all same-day editions linked by the index; fail on partial retrieval."""
+    url = BASE + f'index.php?year={day.year}&month={day.month:02d}&day={day.day:02d}'
+    pending = [(None, url)]
+    seen = set()
+    documents = {}
+    sources = []
+    while pending:
+        requested, source_url = pending.pop(0)
+        if requested is not None and requested in seen:
+            continue
+        if len(sources) >= 8:
+            raise RuntimeError('Demasiadas ediciones enlazadas; revisar índice')
+        if html_file is not None:
+            raw_bytes = Path(html_file).read_bytes()
+            raw = raw_bytes.decode('utf-8')
+        else:
+            raw_bytes, raw = fetch(source_url)
+        # The download control identifies the actual edition displayed by DOF.
+        pdf_labels = set(re.findall(r'nota_to_pdf\.php\?[^\'"<>]*?edicion=([A-Z]{2,8})', unescape(raw)))
+        actual = next(iter(pdf_labels)) if len(pdf_labels) == 1 else None
+        if requested is not None and actual != requested:
+            raise RuntimeError('La edición recibida no coincide con la solicitada')
+        found = extract_links(raw)
+        if not found:
+            raise RuntimeError(SIN_ENLACES)
+        name = f'indice_{actual or "SIN_IDENTIFICAR"}.html'
+        (output / name).write_bytes(raw_bytes)
+        source = {'edicion': actual or 'SIN_IDENTIFICAR', 'url_indice': source_url,
+                  'sha256_indice': sha(raw_bytes), 'archivo': name, 'enlaces': len(found)}
+        sources.append(source)
+        if actual:
+            seen.add(actual)
+        for item in found:
+            # Reject a response containing documents for a different date.
+            q = urllib.parse.parse_qs(urllib.parse.urlparse(item['url']).query)
+            if q.get('fecha', [''])[0] != day.strftime('%d/%m/%Y') and html_file is None:
+                raise RuntimeError('Documento con fecha distinta al índice solicitado')
+            old = documents.get(item['codigo'])
+            if old and (old['titulo'] != item['titulo'] or old['url'] != item['url']):
+                raise RuntimeError('Documento contradictorio entre ediciones')
+            record = documents.setdefault(item['codigo'], dict(item, procedencia=[]))
+            record['procedencia'].append(source.copy())
+        parser = EditionLinks(day)
+        parser.feed(raw)
+        if html_file is None:
+            for edition in sorted(parser.editions - seen):
+                pending.append((edition, url + '&edicion=' + edition))
+    return list(documents.values()), sources, all(s['edicion'] != 'SIN_IDENTIFICAR' for s in sources)
+
+
 def load_state(path):
     if not path.exists():
         return {
@@ -204,14 +278,9 @@ def run(
     candidates = []
 
     try:
-        if html_file:
-            raw = Path(html_file).read_text(
-                encoding="utf-8"
-            )
-        else:
-            raw = fetch(url)[1]
-
-        found = extract_links(raw)
+        found, sources, coverage = collect_editions(day, output, html_file)
+        status['indices_consultados'] = sources
+        status['cobertura_ediciones_enlazadas'] = coverage
 
         if not found:
             raise RuntimeError(SIN_ENLACES)

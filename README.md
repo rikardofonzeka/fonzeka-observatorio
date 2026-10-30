@@ -40,3 +40,23 @@ del monitor para ejecuciones manuales. El validador ordinario rechaza el estado
 `INTEGRACION_MANUAL_DE_EDICIONES`, como corresponde. La integración distingue dos
 ediciones porque el índice sin parámetro devolvió la vespertina; no garantiza que
 la publicación automática actual reúna todas las ediciones de un día.
+
+## Consulta de ediciones enlazadas del DOF
+
+El monitor reúne las ediciones del mismo día enlazadas por el índice (hasta ocho),
+identifica la edición recibida y elimina duplicados por código. Archiva los índices
+consultados con huella SHA-256 en el artefacto de cada ejecución y conserva la
+procedencia por documento en JSON; HTML y Markdown indican la edición.
+
+Si falla una edición enlazada, cambia de fecha, contradice otro título o devuelve
+una edición distinta a la solicitada, la consulta falla y no persiste el historial.
+El validador bloquea la publicación cuando no se identifica la cobertura de las
+ediciones o la procedencia de la bandeja no coincide con el estado.
+La cobertura se limita a lo enlazado al momento de consulta; no anticipa ediciones
+posteriores ni certifica vigencia jurídica. El horario y las condiciones del workflow
+siguen intactos: una ejecución manual no publica mediante el monitor.
+
+Validación del ajuste: nueve pruebas, incluidos índices archivados MAT/VES,
+duplicados, fallos parciales, respuestas de otra edición y procedencia alterada.
+Una consulta manual aislada del 30/10/2026 recuperó 19 documentos (MAT=15/VES=4)
+y pasó el validador; no se usó para publicar ni modificar el historial del repositorio.

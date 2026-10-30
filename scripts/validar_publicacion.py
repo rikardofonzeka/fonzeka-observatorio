@@ -29,6 +29,9 @@ def validar(carpeta):
     if estado.get("tipo_consulta") != "EDICION_DEL_DIA":
         return False, "Consulta anticipada o no ordinaria"
 
+    if estado.get('cobertura_ediciones_enlazadas') is not True:
+        return False, 'Cobertura de ediciones no comprobada'
+
     hoy = dt.datetime.now(
         ZoneInfo("America/Monterrey")
     ).date().isoformat()
@@ -66,6 +69,10 @@ def validar(carpeta):
 
     if not isinstance(bandeja.get("registros"), list):
         return False, "Registros de bandeja incorrectos"
+
+    if (bandeja.get('cobertura_ediciones_enlazadas') is not True or
+            bandeja.get('indices_consultados') != estado.get('indices_consultados')):
+        return False, 'Procedencia de ediciones inconsistente'
 
     return True, "PUBLICACION_AUTORIZADA_TECNICAMENTE"
 
