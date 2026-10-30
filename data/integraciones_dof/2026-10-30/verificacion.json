@@ -1,0 +1,45 @@
+{
+  "verificacion_utc": "2026-10-30T22:27:19.595492+00:00",
+  "indices": [
+    {
+      "edicion": "VES",
+      "url": "https://dof.gob.mx/index.php?year=2026&month=10&day=30",
+      "enlaces": 4,
+      "codigos": [
+        "5802697",
+        "5802698",
+        "5802699",
+        "5802701"
+      ],
+      "sha256": "b0ae96d95e587487181734e6fcebdc520f87f44362e8b1cb835d99b58a9e17a1",
+      "archivo": "fonzeka-indice-30.html"
+    },
+    {
+      "edicion": "MAT",
+      "url": "https://dof.gob.mx/index.php?year=2026&month=10&day=30&edicion=MAT",
+      "enlaces": 15,
+      "codigos": [
+        "5802597",
+        "5802598",
+        "5802600",
+        "5802601",
+        "5802602",
+        "5802604",
+        "5802605",
+        "5802607",
+        "5802608",
+        "5802610",
+        "5802612",
+        "5802614",
+        "5802615",
+        "5802616",
+        "5802618"
+      ],
+      "sha256": "e19d76201801347ea5c2917ed9e3201adb4d015d38d929db3100a69d8f05db51",
+      "archivo": "fonzeka-indice-30-mat.html"
+    }
+  ],
+  "tipo_integracion": "MANUAL",
+  "fecha_integracion_utc": "2026-10-30T22:31:18.199723+00:00",
+  "alcance": "Ediciones MAT y VES enlazadas en los índices consultados; no certifica cobertura de publicaciones posteriores ni vigencia jurídica."
+}
