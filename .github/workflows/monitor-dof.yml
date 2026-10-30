@@ -113,23 +113,49 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      - name: Persistir historial tecnico
+
+      - name: Persistir historial tecnico y publicar bandeja vigente
         if: success()
         env:
           MODO: ${{ inputs.modo || 'normal' }}
           CRON_ACTUAL: ${{ github.event.schedule }}
         run: |
           if [[ "$MODO" == "avance" || "$CRON_ACTUAL" == "0 3 * * 2-6" ]]; then
-            echo "Consulta anticipada: no se modifica historial"
+            echo "Consulta anticipada: no se modifica historial ni bandeja publica"
             exit 0
           fi
 
           git config user.name "fonzeka-monitor[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Conservar el comportamiento existente del historial
           git add data/monitor_dof_state.json
 
+          # Solo la ejecucion ordinaria programada puede publicar
+          if [[ "$CRON_ACTUAL" == "23 14 * * 1-5" ]]; then
+            if python scripts/validar_publicacion.py --input salida_monitor; then
+              mkdir -p monitor-dof
+
+              cp salida_monitor/bandeja.html monitor-dof/bandeja.html
+              cp salida_monitor/bandeja.json monitor-dof/bandeja.json
+              cp salida_monitor/bandeja.md monitor-dof/bandeja.md
+
+              git add \
+                monitor-dof/bandeja.html \
+                monitor-dof/bandeja.json \
+                monitor-dof/bandeja.md
+
+              echo "Bandeja vigente preparada para publicacion"
+            else
+              echo "Bandeja no autorizada tecnicamente; no se publica"
+            fi
+          else
+            echo "Ejecucion manual o no ordinaria: sin publicacion publica"
+          fi
+
           if ! git diff --cached --quiet; then
-            git commit -m "chore: actualizar historial tecnico DOF [skip ci]"
+            git commit -m "chore: actualizar monitor DOF [skip ci]"
             git push origin HEAD:main
+          else
+            echo "No hay cambios que publicar"
           fi
