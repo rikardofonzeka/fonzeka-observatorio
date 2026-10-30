@@ -1,0 +1,84 @@
+name: Publicar fichas autorizadas
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      MESA_TOKEN: ${{ secrets.FONZEKA_MESA_SERVICE_TOKEN }}
+      MESA_ORIGIN: https://fonzeka-mesa-privada.rikardo-fonzeka.chatgpt.site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Obtener exclusivamente versiones aprobadas y enviadas
+        run: |
+          if [[ -n "$MESA_TOKEN" ]]; then
+            curl --fail --silent --show-error --max-time 120 \
+              -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
+              -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
+              "$MESA_ORIGIN/api/publication/queue" -o "$RUNNER_TEMP/cola.json"
+          else
+            echo 'Puente pendiente de configuración; solo se despliega contenido público existente'
+            echo '{"schema":1,"items":[]}' > "$RUNNER_TEMP/cola.json"
+          fi
+          python scripts/publicar_aprobados.py --queue "$RUNNER_TEMP/cola.json" --ack "$RUNNER_TEMP/ack.json"
+      - name: Incorporar únicamente las fichas autorizadas
+        id: contenido
+        run: |
+          CANTIDAD="$(python -c 'import json,os; print(len(json.load(open(os.environ["RUNNER_TEMP"]+"/ack.json"))["keys"]))')"
+          echo "cantidad=$CANTIDAD" >> "$GITHUB_OUTPUT"
+          if [[ "$CANTIDAD" != "0" ]]; then
+            git config user.name 'fonzeka-editorial[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add publicaciones/dof index.html
+            if ! git diff --cached --quiet; then
+              git commit -m 'docs: publicar fichas autorizadas desde mesa privada'
+              git push origin HEAD:main
+            fi
+          fi
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Preparar solo archivos públicos
+        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
+        run: python scripts/empaquetar_publico.py --output "$RUNNER_TEMP/sitio-publico"
+      - uses: actions/configure-pages@v5
+        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
+        with:
+          path: ${{ runner.temp }}/sitio-publico
+      - uses: actions/deploy-pages@v4
+        id: deployment
+        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
+      - name: Confirmar publicación tras despliegue exitoso
+        if: steps.contenido.outputs.cantidad != '0'
+        env:
+          COMMIT_PUBLICO: ${{ steps.contenido.outputs.commit }}
+        run: |
+          python - <<'PY'
+          import json,os
+          path=os.environ['RUNNER_TEMP']+'/ack.json'
+          d=json.load(open(path));d['commit_url']='https://github.com/rikardofonzeka/fonzeka-observatorio/commit/'+os.environ['COMMIT_PUBLICO']
+          open(path,'w').write(json.dumps(d))
+          PY
+          curl --fail --silent --show-error --max-time 120 \
+            -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
+            -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
+            -H 'Content-Type: application/json' \
+            --data-binary "@$RUNNER_TEMP/ack.json" \
+            "$MESA_ORIGIN/api/publication/ack"
