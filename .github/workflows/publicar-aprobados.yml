@@ -26,6 +26,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Sincronizar índices oficiales con la mesa privada
+        continue-on-error: true
+        run: |
+          if [[ -z "$MESA_TOKEN" ]]; then
+            echo '::warning::Sincronización privada pendiente de clave de servicio'
+            exit 1
+          fi
+          curl --fail --silent --show-error --max-time 180 \
+            -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
+            -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
+            -H 'Content-Type: application/json' \
+            --data '{}' "$MESA_ORIGIN/api/monitor/sync" -o "$RUNNER_TEMP/sincronizacion.json"
+          python - <<'PYTHON'
+          import json, os
+          data = json.load(open(os.environ['RUNNER_TEMP']+'/sincronizacion.json'))
+          failures = [r for r in data['results'] if r['status'] != 'OK']
+          print('Consultas DOF:', len(data['results']), '· Pendientes:', len(failures))
+          for row in failures:
+              print('::warning::DOF '+row['day']+': '+row.get('error', 'Consulta pendiente'))
+          if failures:
+              raise SystemExit(1)
+          PYTHON
       - name: Obtener exclusivamente versiones aprobadas y enviadas
         run: |
           if [[ -n "$MESA_TOKEN" ]]; then
