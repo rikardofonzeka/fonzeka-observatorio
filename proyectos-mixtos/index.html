@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>Proyectos mixtos CFE — Relación completa 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5f1;--surface:#ffffff;--surface2:#eef0e9;--ink:#17201a;--muted:#5a665e;--line:#d9ddd3;--accent:#0f5c3f;--accent2:#c98a12;--warn:#8a3b12;--warnbg:#fdf0e3;--ok:#0f5c3f;--okbg:#e6f2ec;--chip:#e8ece4;--shadow:0 8px 30px rgba(20,35,25,.08)}
+@media(prefers-color-scheme:dark){:root{--bg:#101512;--surface:#171d19;--surface2:#1e2621;--ink:#eef2ee;--muted:#a7b3aa;--line:#2c362f;--accent:#4cc38a;--accent2:#e8b34b;--warn:#f0a06a;--warnbg:#2e2118;--ok:#4cc38a;--okbg:#173327;--chip:#232d27;--shadow:0 8px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+h1,h2,h3{font-family:Archivo,sans-serif;line-height:1.08;letter-spacing:-.02em} a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px}
+.hero{padding:36px 0 22px;border-bottom:3px solid var(--ink)}
+.eyebrow{font-family:JetBrains Mono,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.hero h1{font-size:clamp(32px,5.5vw,56px);margin:10px 0 12px;max-width:900px}
+.hero p{font-size:17px;color:var(--muted);max-width:820px;margin:0}
+.alert{margin:22px 0;background:var(--warnbg);border:1px solid color-mix(in srgb,var(--warn) 35%, transparent);border-radius:12px;padding:16px 18px}
+.alert strong{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.kpi b{font-family:Archivo;font-size:30px;display:block;line-height:1}
+.kpi span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+section{margin-top:36px} h2{font-size:26px;margin:0 0 8px} .sub{color:var(--muted);margin:0 0 16px;max-width:820px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5}
+.controls input,.controls select{flex:1;min-width:180px;padding:11px 13px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:15px}
+.count{font-family:JetBrains Mono,monospace;font-size:13px;color:var(--muted);align-self:center}
+.tablewrap{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px} th{text-align:left;background:var(--surface2);padding:12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)} td{padding:12px;border-top:1px solid var(--line);vertical-align:top}
+tr{cursor:pointer} tr:hover td{background:var(--surface2)}
+.badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.b-ok{background:var(--okbg);color:var(--ok)} .b-nd{background:var(--chip);color:var(--muted)} .b-pkg{background:#e8eef7;color:#24507a} @media(prefers-color-scheme:dark){.b-pkg{background:#1c2c3f;color:#8fc0f0}}
+.detail{display:none;background:var(--surface2);padding:16px 18px;border-top:1px solid var(--line);font-size:14px}
+.detail.open{display:block}
+.detail dl{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;margin:0} .detail dt{font-weight:600;color:var(--muted)} .detail dd{margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:19px} .card p{color:var(--muted);font-size:14px;margin:6px 0}
+.card ul{margin:8px 0;padding-left:18px;font-size:14px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px} .step b{font-family:JetBrains Mono,monospace;font-size:12px;color:var(--accent);display:block;margin-bottom:6px} .step p{margin:0;font-size:14px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.sources{font-size:14px} .sources li{margin:8px 0;word-break:break-word}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:13px}
+@media(max-width:900px){.grid,.cards,.timeline{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr} table th:nth-child(4),table td:nth-child(4),table th:nth-child(5),table td:nth-child(5){display:none}}
+@media(max-width:560px){.grid,.cards,.timeline{grid-template-columns:1fr}.detail dl{grid-template-columns:1fr} table th:nth-child(3),table td:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="eyebrow">CFE · SENER — Primera convocatoria 2026 · Corte al 9 de noviembre de 2026</div>
+<h1>Proyectos mixtos de generación: la relación completa que sí se puede documentar</h1>
+<p>Los 37 proyectos adjudicados el 5 de junio de 2026, con desarrollador, zona, tecnología, capacidad, almacenamiento, ubicación, inversión, estado del Contrato de Inversión Mixta (CIM) y del PPA — y, donde no hay dato público, marcado como <strong>ND</strong> en lugar de inventarlo.</p>
+</header>
+
+<div class="alert"><strong>⚠ Aclaración central sobre los “34 proyectos”:</strong> El 3 de noviembre de 2026, Francisco Maldonado, director de Generación de CFE, dijo que <strong>34 de 38 proyectos</strong> que pasaron las fases ya firmaron CIM, fideicomiso, prestación de servicios y administración de operación. <strong>Ninguna fuente pública nombra cuáles son esos 34, ni cuáles son los 4 que faltan, ni quién es el proyecto nº 38.</strong> Por eso esta página no presenta una lista falsa de 34: presenta los <strong>37 adjudicados verificables</strong> y marca los únicos <strong>9 con CIM identificado individualmente</strong> (Polaris 3 + Cubico 5 en paquete + Elawan 1). Los otros 25 firmados existen solo como cifra agregada.</div>
+
+<div class="grid">
+<div class="kpi"><b>37</b><span>Proyectos adjudicados el 5 jun 2026 a 31 desarrolladores — Von Wobeser, 12 jun 2026</span></div>
+<div class="kpi"><b>7,411 MW</b><span>Capacidad del fallo de junio (33 FV ~6,710 MW + 4 eólicos ~700 MW según prensa de junio; ver contradicción abajo)</span></div>
+<div class="kpi"><b>8,026 MW</b><span>Cifra de noviembre: 38 proyectos mixtos, &gt;2,500 MW de almacenamiento, MXN 204,537 millones — Emilia Calleja, 5 nov 2026</span></div>
+<div class="kpi"><b>0</b><span>PPA firmados y confirmados a 9 nov 2026. Previsión general: 1T 2027</span></div>
+</div>
+
+<section>
+<h2>Cómo funciona el esquema</h2>
+<div class="timeline">
+<div class="step"><b>28 ENE 2026</b><p>Lineamientos del Esquema para Desarrollo Mixto publicados en el DOF.</p></div>
+<div class="step"><b>6 FEB 2026</b><p>CFE y SENER publican la Primera Convocatoria. 46 proyectos fueron descartados o declarados desiertos.</p></div>
+<div class="step"><b>5 JUN 2026</b><p>Fallo: 37 proyectos adjudicados. CFE conserva mínimo 54% y el privado hasta 46%.</p></div>
+<div class="step"><b>1T 2027</b><p>Firma prevista de los PPA: CFE compra el 70% de la energía y CEL por 25 años; el 30% restante va a mercado. Almacenamiento obligatorio ≥30% de la capacidad, 3 h de descarga.</p></div>
+</div>
+<p class="sub" style="margin-top:12px">Construcción prevista desde noviembre de 2026 y operación comercial general en 2028–2029. El director jurídico de CFE, Manuel Calva, estimó concretar los PPA antes de fin del primer semestre de 2027 para iniciar construcción en el segundo semestre de 2027.</p>
+</section>
+
+<section>
+<h2>Relación de proyectos — los 37 adjudicados</h2>
+<p class="sub">Fuente base de nombre, desarrollador y zona: Von Wobeser y Sierra, 12 jun 2026, a partir del Portal de Seguimiento de Convocatorias de CFE. Toca cualquier fila para ver toda la ficha. <strong>ND = no disponible públicamente.</strong> MW con * = capacidad de expediente ambiental (MIA), no capacidad adjudicada por CFE.</p>
+<div class="controls">
+<input id="q" type="search" placeholder="Buscar por proyecto, desarrollador, estado o zona…">
+<select id="zone"><option value="">Todas las zonas</option><option>Norte</option><option>Oriente</option><option>Baja California</option><option>Baja California Sur</option><option>Occidente</option><option>Noroeste</option><option>Peninsular</option><option>Noreste</option></select>
+<select id="cim"><option value="">CIM: todos</option><option value="confirmado">CIM confirmado individualmente</option><option value="paquete">En paquete Cubico</option><option value="nd">Sin confirmación individual</option></select>
+<span class="count" id="count"></span>
+</div>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Proyecto</th><th>Desarrollador</th><th>Zona</th><th>MW</th><th>CIM</th></tr></thead><tbody id="tbody"></tbody></table></div>
+<p class="sub" style="margin-top:10px">Solo <strong>13 de 37</strong> tienen MW verificable en fuente identificable y solo <strong>5 de 37</strong> tienen inversión por proyecto. Con municipio conocido: ~13 de 37.</p>
+</section>
+
+<section>
+<h2>Los 9 con CIM identificado</h2>
+<div class="cards">
+<article class="card"><h3>Polaris — 3 proyectos · 3 jul 2026</h3><p>Primer CIM confirmado públicamente. Firmado con Banca Mifel como fiduciario en representación de CFE, marco de 30 años.</p><ul><li><strong>248.93 MWdc / 204.2 MWac</strong> en total</li><li><strong>61.6 MW / 192 MWh</strong> de baterías</li><li><strong>USD 217 millones</strong> (sin interconexión). Energy Magazine citó USD 250 m en noviembre: discrepancia sin resolver.</li><li>PPA previstos: Don Humberto en dic 2026; Los Girasoles y Tres Hermanos en ene 2027</li></ul></article>
+<article class="card"><h3>Cubico — 5 proyectos · jul–ago 2026</h3><p>Acuerdo de empresa conjunta con CFE, vigencia 25 años. Anunciado por Reuters el 22 jul 2026; Miranda Partners fecha la formalización el 3 ago 2026.</p><ul><li><strong>578 MWac</strong> y <strong>175.7 MW / ~500 MWh</strong> de BESS</li><li><strong>~USD 1,000 millones</strong></li><li>Ubicaciones del paquete: Tamaulipas, Nuevo León, Campeche y Península de Yucatán</li><li>Altamira Solar inicia construcción en dic 2026; los otros 4 en 2T 2027. <strong>No se publican nombres ni MW individuales de los 5.</strong></li></ul></article>
+<article class="card"><h3>Elawan — San Pedro Solar · jul 2026</h3><p>Huimilpan, Querétaro. CIM formalizado según PV Magazine, 29 jul 2026 (día exacto ND).</p><ul><li><strong>98.43 MWp / 98.2 MW</strong> de interconexión</li><li><strong>72 MWh</strong> de almacenamiento (MW no precisado)</li><li>~280 GWh/año, ~85,000 hogares</li><li>La empresa no informó inversión del CIM, inicio de obras ni fecha de operación. PPA ambiguo: la nota dice que el acuerdo “incluye” PPA, sin fecha de firma publicada.</li></ul></article>
+</div>
+</section>
+
+<section>
+<h2>La diferencia 37 → 38 y la contradicción solar / eólica</h2>
+<div class="two">
+<div class="note"><h3 style="margin-top:0">¿De dónde sale el 38?</h3><p>Entre junio y noviembre la capacidad sube de 7,411 a 8,026 MW (<strong>+615 MW</strong>), la inversión de ~USD 7,400 m a USD 10,000–10,600 m y el almacenamiento de ~1,850 a &gt;2,500 MW. <strong>Ninguna fuente oficial publica el nombre del proyecto nº 38</strong> ni explica si es un proyecto añadido, una ampliación o un cambio de criterio. Cubico pasó de 500 MW en junio a 578 MWac en agosto (+78 MW), lo que explicaría solo una parte.</p></div>
+<div class="note"><h3 style="margin-top:0">¿Solar o eólica? Las fuentes no coinciden ⚠</h3><p>La prensa de junio reparte 6,710 MW solares / 700 MW eólicos. Pero el Gobierno de Tamaulipas (11 jun 2026) llama <strong>eólicos</strong> a 6 proyectos de esta misma convocatoria en ese estado que suman 2,524–2,532 MW, y Maldonado en noviembre cifra la fotovoltaica en solo ~4,800 MW. <strong>No hay desglose oficial por proyecto que lo resuelva</strong>: en la tabla, los 6 de Tamaulipas van marcados como eólicos según el gobierno estatal.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Aparte: los 4 del Plan de Expansión 2026-2030 — sin contrato</h2>
+<p class="sub">Presentados en el 2º Roadshow de CFE el 23 de octubre de 2026. <strong>Ninguno tiene adjudicatario, CIM ni PPA a 9 nov 2026</strong> y no forman parte de los 37/38. Se adjudicarán “en los próximos meses”, junto a 32 proyectos de transmisión por MXN 35,904 millones.</p>
+<div class="cards" style="grid-template-columns:repeat(2,1fr)">
+<article class="card"><h3>Termosolar I El Crucero — BCS</h3><p>100 MW en interconexión. Dos torres termosolares + dos campos fotovoltaicos, &gt;10,000 heliostatos, torre de 160 m, almacenamiento térmico de 12 h. Inversión ND.</p></article>
+<article class="card"><h3>Termosolar II Comondú — BCS</h3><p>50 MW en interconexión (50 MW termosolar + 50 MW FV según ficha). Inversión ND.</p></article>
+<article class="card"><h3>Cogeneración Tula — Hidalgo</h3><p>681 MW en verano / 710 MW media anual. Configuración 3x3x1, gas natural 150 MMpcd. Inicio 2027, construcción 45 meses, operación 2030 según roadshow.</p></article>
+<article class="card"><h3>Central Híbrida Oasis — Mulegé, BCS</h3><p>Guerrero Negro, sistema aislado. 72 MWdc / 60 MWac FV, BESS 20 MW / 80 MWh (4 h), electrolizadores 20 MW y celdas de combustible 4×1.5 = 6 MW. Operación antes de 2030 según SENER.</p></article>
+</div>
+</section>
+
+<section>
+<h2>Qué NO está disponible públicamente</h2>
+<div class="note"><ul style="margin:0;padding-left:18px">
+<li>La lista nominal de los 34 firmados, los 4 sin firmar y el proyecto nº 38.</li>
+<li>MW de 24 de los 37 proyectos; almacenamiento e inversión por proyecto salvo los casos señalados en cada ficha.</li>
+<li>Fecha exacta de CIM fuera de Polaris (3 jul 2026), Cubico en paquete y Elawan (julio 2026, día ND).</li>
+<li>Ningún PPA firmado y publicado; solo previsiones.</li>
+<li>El Portal SCOEE de CFE citado por Von Wobeser devolvió HTTP 404 en verificación en vivo el 9 nov 2026, por lo que no se pudo extraer capacidad por proyecto desde ahí.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Fuentes</h2>
+<ul class="sources">
+<li>Von Wobeser y Sierra, 12 jun 2026 — lista de los 37: <a href="https://www.vonwobeser.com/images/PDF_news/2026/2026-06-12-CFE-Adjudica-Proyectos-Bajo-El-Esquema-Para-Desarrollo-Mixto.pdf" target="_blank" rel="noopener">vonwobeser.com (PDF)</a></li>
+<li>Zócalo, 3 nov 2026 — Maldonado, 34/38 y PPA 1T 2027: <a href="https://www.zocalo.com.mx/firmara-contratos-mixtos-cfe-hasta-2027/" target="_blank" rel="noopener">zocalo.com.mx</a></li>
+<li>Infobae, 3 nov 2026 — 34/38, 54%/46%, ~4,800 MW FV: <a href="https://www.infobae.com/mexico/2026/11/03/cfe-que-son-los-nuevos-contratos-mixtos-y-como-impactaran-en-tu-recibo-de-luz/?outputType=amp-type" target="_blank" rel="noopener">infobae.com</a></li>
+<li>El Economista, 5 nov 2026 — Calleja, 38 proyectos y 8,026 MW: <a href="https://www.eleconomista.com.mx/amp/empresas/87-nueva-capacidad-renovable-cfe-vendra-proyectos-mixtos-privados-emilia-calleja-20261105-842410.html" target="_blank" rel="noopener">eleconomista.com.mx</a></li>
+<li>PV Magazine México, 7 jul 2026 — CIM de Polaris: <a href="https://www.pv-magazine-mexico.com/2026/07/07/polaris-firma-con-la-cfe-un-contrato-de-inversion-mixta-para-250-mw-solares-y-192-mwh-en-baterias/" target="_blank" rel="noopener">pv-magazine-mexico.com</a></li>
+<li>Energy Magazine, 6 nov 2026 — PPA de Polaris dic 2026 / ene 2027: <a href="https://energymagazine.mx/2026/11/cfe-y-polaris-alistan-inversion-de-250-millones-de-dolares-en-3-proyectos-solares-en-mexico/" target="_blank" rel="noopener">energymagazine.mx</a></li>
+<li>Reuters, 22 jul 2026 — Cubico, 5 proyectos y 578 MWac: <a href="https://www.reuters.com/es/mundo/OTEMDQV5JRKLLC5A7XZXVON6ME-2026-07-22/" target="_blank" rel="noopener">reuters.com</a></li>
+<li>Miranda Partners, 5 ago 2026 — formalización Cubico 3 ago: <a href="https://miranda-partners.com/wp-content/uploads/2026/08/85280527-Energy-Chatter-5-08-26-ESP.pdf" target="_blank" rel="noopener">miranda-partners.com (PDF)</a></li>
+<li>PV Magazine México, 29 jul 2026 — CIM de Elawan: <a href="https://www.pv-magazine-mexico.com/2026/07/29/elawan-y-cfe-desarrollaran-en-queretaro-una-planta-solar-de-98-43-mwp-con-72-mwh-de-almacenamiento/" target="_blank" rel="noopener">pv-magazine-mexico.com</a></li>
+<li>Gobierno de Tamaulipas, 11 jun 2026 — 6 proyectos eólicos: <a href="https://tamaulipas.gob.mx/2026/06/incrementara-tamaulipas-mas-de-2500-mw-con-proyectos-eolicos/" target="_blank" rel="noopener">tamaulipas.gob.mx</a></li>
+<li>CFE Boletín BP-211/26, 27 oct 2026 — Roadshow y los 4 por adjudicar: <a href="https://calificados.cfe.mx/Pages/assets/pdf/211roadshowvf.pdf" target="_blank" rel="noopener">cfe.mx (PDF)</a></li>
+<li>El CEO, 12 jun 2026 — totales por grupo económico: <a href="https://elceo.com/negocios/cfe-contratos-mixtos-generan-optimismo-pero-enfrentan-riesgos/" target="_blank" rel="noopener">elceo.com</a></li>
+</ul>
+</section>
+<footer>Relación construida solo con fuentes públicas verificadas al 9 de noviembre de 2026. Donde una fuente es de expediente ambiental (MIA), secundaria o no verificada, la ficha lo dice expresamente. ND significa que el dato no se encontró en fuentes públicas, no que no exista.</footer>
+</div>
+<script>
+var P=[
+[1,"CFV LAS GARZAS","Freeman Energy","Norte","FV* (ver nota de tecnología)","ND","ND (aplica regla general ≥30% / 3 h)","ND (solo zona Norte)","ND","nd","No publicado individualmente","No firmado; previsión general 1T 2027","2028–2029 (ventana general)"],
+[2,"Planta Solar Cerro Colorado","Desarrollos y Soluciones Energéticas Eirene","Oriente","Solar FV","ND","ND","ND (solo zona Oriente)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[3,"Solar Energía Tres Hermanos","Solar Energía Tres Hermanos (Polaris)","Oriente","Solar FV + BESS","91.06 MWdc / 75 MWac","22.5 MW / 71.6 MWh","Tlaxcala (municipio ND)","USD 78 millones","confirmado","Firmado 3 jul 2026, con Banca Mifel como fiduciario de CFE, marco 30 años","No firmado; previsto ene 2027 (CEO Polaris, 6 nov 2026)","Límite 1 dic 2028"],
+[4,"CFV Quasara (Quasara San Luis Río Colorado)","Energía Familiar","Baja California","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[5,"Solitario","San Luis Río Colorado Ingeniería","Baja California","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[6,"San Simón Solar","SQ Infraestructura","Baja California","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[7,"El Palmar","Eléctrica Aselco","Baja California Sur","Solar FV","ND","ND","ND (solo zona BCS)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[8,"La Pasión","Eléctrica Aselco","Baja California Sur","Solar FV","ND","ND","ND (solo zona BCS)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[9,"Álvaro Obregón","ZML Desarrolladora MX","Baja California Sur","Solar FV","ND","ND","ND (solo zona BCS)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[10,"Fresnillo (PV Atocha)","Atlántica Renewable Power Mexico","Occidente","Solar FV","ND","ND","ND (solo zona Occidente)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[11,"San Pedro Solar","Elawan Wind México III (Elawan Energy)","Occidente","Solar FV + BESS","98.43 MWp / 98.2 MW interconexión (92.4 MWac en MIA original)","72 MWh (potencia en MW ND)","Huimilpan, Querétaro (nueva MIA-R 4 ago 2026: Corregidora y Huimilpan)","MXN 1,115.2 millones (según MIA; la empresa no informó inversión del CIM)","confirmado","Formalizado en julio 2026 (día exacto ND)","Ambiguo: PV Magazine dice que el acuerdo incluye PPA y servicios con baterías; no hay fecha de firma publicada","ND (la empresa no informó calendario)"],
+[12,"Selka Power Plant 1","Selka Power Plant 1","Occidente","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[13,"Sol de Sonora 70","Sol de Sonora","Noroeste","Solar FV / híbrido*","ND","ND","Sonora","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[14,"Cimarrón Solar","Cimarrón Solar","Noroeste","Solar FV","ND","ND","Sonora (por nombre/grupo)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[15,"Sunora","Sunora","Noroeste","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[16,"La Poza Solar","La Poza Solar","Noroeste","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[17,"Don Humberto","PSFV Don Humberto (Polaris)","Noroeste","Solar FV + BESS","25.3 MWdc / 19.2 MWac","6.1 MW / 18.9 MWh","Sinaloa (municipio ND)","USD 19 millones","confirmado","Firmado 3 jul 2026, marco 30 años","No firmado; previsto dic 2026 (CEO Polaris)","Límite 1 abr 2028; construcción 1T 2027"],
+[18,"Tikinmul","Eléctrica Aselco","Peninsular","Solar FV","ND","ND","Yucatán (por nombre)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[19,"Parque FV Energías Renovables Kiin (Tekax)","Cubico México","Peninsular","Solar FV + BESS","50 MWdc / 42.35 MWac* (MIA)","ND","Tekax, Yucatán","ND","paquete","En paquete Cubico de 5 proyectos: anunciado 22 jul 2026, formalizado 3 ago 2026 según Miranda Partners; sin desglose por proyecto","No firmado (individual ND); PPA general 1T 2027","Construcción del resto de Cubico: 2T 2027 (no individual)"],
+[20,"Parque FV Energías Renovables de México Tres (Hecelchakán)","Cubico México","Peninsular","Solar FV + BESS","ND","ND","Hecelchakán, Campeche (por nombre)","ND","paquete","En paquete Cubico (ver Kiin)","No firmado (individual ND)","2T 2027 (paquete)"],
+[21,"Parque FV Energías Renovables Saas (Peto)","Cubico México","Peninsular","Solar FV + BESS","~70 MWdc* (MIA SEMARNAT)","ND","Peto, Yucatán","USD 45 millones* (NotaTrasNota, nov 2026)","paquete","En paquete Cubico (ver Kiin)","No firmado (individual ND)","2T 2027 (paquete)"],
+[22,"Los Girasoles","Hocofaisan Maya (Polaris)","Peninsular","Solar FV + BESS","132.57 MWdc / 110 MWac","33 MW / 101.5 MWh","José María Morelos, Quintana Roo","USD 120 millones","confirmado","Firmado 3 jul 2026, marco 30 años","No firmado; previsto ene 2027","Límite 28 nov 2028; construcción 2T 2027"],
+[23,"PV Sandom Solar","Francisco Javier Abejaro Serrano","Peninsular","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[24,"PV Moquel Solar","Francisco Javier Abejaro Serrano","Peninsular","Solar FV","ND","ND","ND","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[25,"Dalia 3 PV (Castamay)","Atlántica Renewable Power México","Peninsular","Solar FV","ND","ND","Campeche (Castamay, por nombre)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[26,"Global Solar 3 Campeche 100 MW","Global Solar America 3","Peninsular","Solar FV","100 MW (en el propio nombre del proyecto)","ND","Campeche","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[27,"Planta Solar Haab Kiin","Desarrollos y Soluciones Energéticas Arce","Peninsular","Solar FV","155.59 MW* (expediente ambiental, nov 2026)","ND","Umán–Hunucmá, Yucatán","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[28,"Parque FV Energías Renovables de Tamaulipas (Altamira Solar, probable)","Cubico México","Noreste","Solar FV + BESS","ND (Altamira Solar: 78 MW solo en LinkedIn/Facebook, NO verificado)","ND (paquete Cubico: 175.7 MW / 500 MWh en total)","Tamaulipas (Altamira, según Cubico)","ND","paquete","En paquete Cubico (ver Kiin)","No firmado (individual ND)","Construcción dic 2026 (primer proyecto de Cubico)"],
+[29,"Energía Limpia El Mezquite","Cubico México","Noreste","Solar FV + BESS","ND","ND","Tamaulipas / Nuevo León (paquete Cubico; estado exacto ND)","ND","paquete","En paquete Cubico (ver Kiin)","No firmado (individual ND)","2T 2027 (paquete)"],
+[30,"Santa Gertrudis","Thermion Energy","Noreste","Eólica según Gob. Tamaulipas ⚠","503 MW (Gob. Tam., 11 jun 2026)","ND","Reynosa, Tamaulipas","ND","nd","No publicado individualmente","No firmado; 1T 2027","Construcción principios 2027; fin dic 2028 / principios 2029"],
+[31,"El Guajillo","Thermion Energy","Noreste","Eólica según Gob. Tamaulipas ⚠","460 MW","ND","Méndez, Tamaulipas","ND","nd","No publicado individualmente","No firmado; 1T 2027","dic 2028 / principios 2029"],
+[32,"El Chorro","Terralia Energía y Campo","Noreste","Eólica según Gob. Tamaulipas y CEO de Terralia ⚠","705 MW","317 MW / ~952 MWh (CEO Terralia, oct 2026)","Casas, Tamaulipas","~USD 1,000 millones según CEO Terralia (El CEO/Energy21 estiman ~USD 705 m por regla USD 1m/MW: cifras distintas)","nd","No publicado individualmente","No firmado; PPA de 25 años a ~USD 50/MWh según CEO Terralia (no firmado)","dic 2028 / principios 2029"],
+[33,"Delaro","Delaro","Noreste","Eólica según Gob. Tamaulipas ⚠","175 MW","ND","Reynosa, Tamaulipas","ND","nd","No publicado individualmente","No firmado; 1T 2027","dic 2028 / principios 2029"],
+[34,"Energeo Los Molinos","Energeo Los Molinos","Noreste","Eólica según Gob. Tamaulipas ⚠","171 MW","ND","Matamoros, Tamaulipas","ND","nd","No publicado individualmente","No firmado; 1T 2027","dic 2028 / principios 2029"],
+[35,"Montecristo","Compañía Eólica de Reynosa (grupo Thermion según El CEO)","Noreste","Eólica según Gob. Tamaulipas ⚠","510 MW","ND","Méndez, Tamaulipas","ND","nd","No publicado individualmente","No firmado; 1T 2027","dic 2028 / principios 2029"],
+[36,"Proyecto Eólico Región Noreste","GP Renewables de México","Noreste","Eólica (por nombre)","ND","ND","Noreste (Tamaulipas/Nuevo León, ND)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"],
+[37,"Viento de Bella Unión","Viento de Bella Unión","Noreste","Eólica (por nombre)","ND","ND","Noreste (ND)","ND","nd","No publicado individualmente","No firmado; 1T 2027","2028–2029"]
+];
+var tbody=document.getElementById('tbody'),q=document.getElementById('q'),zone=document.getElementById('zone'),cim=document.getElementById('cim'),count=document.getElementById('count');
+function badge(s){if(s==='confirmado')return '<span class="badge b-ok">CIM firmado ✓</span>';if(s==='paquete')return '<span class="badge b-pkg">Paquete Cubico</span>';return '<span class="badge b-nd">Sin confirmación individual</span>';}
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function render(){
+ var term=q.value.toLowerCase(),z=zone.value,c=cim.value,shown=0;tbody.innerHTML='';
+ P.forEach(function(p){
+  var hay=(p[1]+' '+p[2]+' '+p[3]+' '+p[7]).toLowerCase();
+  if(term&&hay.indexOf(term)===-1)return; if(z&&p[3]!==z)return; if(c&&p[9]!==c)return; shown++;
+  var tr=document.createElement('tr');
+  tr.innerHTML='<td>'+p[0]+'</td><td><strong>'+esc(p[1])+'</strong></td><td>'+esc(p[2])+'</td><td>'+esc(p[3])+'</td><td>'+esc(p[5])+'</td><td>'+badge(p[9])+'</td>';
+  var tr2=document.createElement('tr');var td=document.createElement('td');td.colSpan=6;td.style.padding='0';td.style.borderTop='none';
+  td.innerHTML='<div class="detail"><dl><dt>Tecnología</dt><dd>'+esc(p[4])+'</dd><dt>Capacidad</dt><dd>'+esc(p[5])+'</dd><dt>Almacenamiento</dt><dd>'+esc(p[6])+'</dd><dt>Ubicación</dt><dd>'+esc(p[7])+'</dd><dt>Inversión estimada</dt><dd>'+esc(p[8])+'</dd><dt>Estado del CIM</dt><dd>'+esc(p[10])+'</dd><dt>Estado del PPA</dt><dd>'+esc(p[11])+'</dd><dt>Entrada en operación</dt><dd>'+esc(p[12])+'</dd></dl></div>';
+  tr2.appendChild(td);tr2.style.display='none';
+  tr.addEventListener('click',function(){var d=td.querySelector('.detail');var open=d.classList.toggle('open');tr2.style.display=open?'table-row':'none';});
+  tbody.appendChild(tr);tbody.appendChild(tr2);
+ });
+ count.textContent=shown+' de 37 proyectos';
+}
+q.addEventListener('input',render);zone.addEventListener('change',render);cim.addEventListener('change',render);render();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+numero,proyecto,tecnologia,capacidad,ubicacion,inversion_estimada,estado
+1,Termosolar I El Crucero,Híbrido termosolar + FV: 2 torres termosolares + 2 campos FV; almacenamiento térmico 12 h,100 MW (punto de interconexión),Baja California Sur,ND,Por adjudicar; decisiones previstas nov 2026–ene 2027
+2,Termosolar II Comondú,"Híbrida termosolar + FV (50 MW termosolar + 50 MW FV según ficha, 50 MW en interconexión)",50 MW,Baja California Sur,ND,Por adjudicar
+3,Central de Cogeneración Tula,Cogeneración 3x3x1; vapor 320–842 t/h; gas natural 150 MMpcd,681 MW (verano) / 710 MW (media anual),"Tula de Allende, Hidalgo",ND,"Por adjudicar; inicio 2027, construcción 45 meses, operación 2030"
+4,Central Híbrida Oasis,FV + BESS + electrólisis H2 verde + celdas de combustible,72 MWdc / 60 MWac FV; BESS 20 MW / 80 MWh (4 h); electrolizadores 20 MW consumo; celdas 4×1.5 = 6 MW,"Guerrero Negro, Mulegé, Baja California Sur (sistema aislado)",ND,Por adjudicar; operación antes de 2030 según SENER
