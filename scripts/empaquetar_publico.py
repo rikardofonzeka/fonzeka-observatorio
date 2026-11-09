@@ -6,7 +6,20 @@ from pathlib import Path
 
 
 def empaquetar(root,output):
-    names=['index.html','expediente-001.html','logo-fonzeka.png','icono.png','monitor-dof/index.html']
+        names = [
+        'index.html',
+        'expediente-001.html',
+        'logo-fonzeka.png',
+        'icono.png',
+        'monitor-dof/index.html',
+        'proyectos-mixtos/index.html',
+        'proyectos-mixtos/data/proyectos.json',
+        'proyectos-mixtos/data/proyectos.csv',
+        'proyectos-mixtos/data/fuentes.json',
+        'proyectos-mixtos/data/fuentes.csv',
+        'proyectos-mixtos/data/plan-expansion-2026-2030.json',
+        'proyectos-mixtos/data/plan-expansion-2026-2030.csv',
+    ]
     folder=root/'publicaciones/dof';manifest=folder/'aprobaciones.json'
     if manifest.exists():
         names+=['publicaciones/dof/index.html','publicaciones/dof/aprobaciones.json']
