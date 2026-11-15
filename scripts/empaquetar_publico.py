@@ -11,6 +11,7 @@ def empaquetar(root, output):
         'expediente-001.html',
         'logo-fonzeka.png',
         'icono.png',
+        'cronologia-electrica-2024-2026.pdf',
         'monitor-dof/index.html',
         'proyectos-mixtos/index.html',
         'proyectos-mixtos/data/proyectos.json',
