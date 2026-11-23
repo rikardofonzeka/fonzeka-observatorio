@@ -78,13 +78,15 @@ def publicar(queue, root, ack):
         for field in ['cambios','antecedentes','transitorios','implicaciones','evidencia']:
             values[field.upper()]=paragraphs(d['editorial'][field])
         rendered=re.sub(r'\{\{([A-Z]+)\}\}',lambda m:values[m[1]],template)
+        # Solo cambia la navegación del resultado; la plantilla aprobada y su huella permanecen intactas.
+        rendered=rendered.replace('href="../../index.html">← Volver al observatorio', 'href="../../observatorio.html">← Volver al observatorio', 1)
         (out/filename).write_text(rendered)
     all_records=sorted(entries.values(),key=lambda r:(r['fecha_dof'],r['codigo']),reverse=True)
     manifest.write_text(json.dumps(all_records,ensure_ascii=False,indent=2)+'\n')
-    body='<nav><a href="../../">Volver al Observatorio</a></nav><h1>Publicaciones documentales DOF</h1><p>Fichas autorizadas para consulta pública. La fecha del DOF se distingue de la autorización editorial; no se certifica vigencia jurídica.</p><ul>'
+    body='<nav><a href="../../observatorio.html">Volver al Observatorio</a></nav><h1>Publicaciones documentales DOF</h1><p>Fichas autorizadas para consulta pública. La fecha del DOF se distingue de la autorización editorial; no se certifica vigencia jurídica.</p><ul>'
     body+=''.join('<li><a href="'+html.escape(r['archivo'],quote=True)+'">'+html.escape(r['titulo'])+'</a> · '+r['fecha_dof']+'</li>' for r in all_records)+'</ul>'
     (out/'index.html').write_text(page('Publicaciones documentales DOF',body))
-    home=root/'index.html'
+    home=root/'observatorio.html'
     content=home.read_text()
     cards=''
     for r in all_records:

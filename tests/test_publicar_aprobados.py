@@ -25,21 +25,26 @@ class PublicationTest(unittest.TestCase):
   i=fixture();i['document']['editorial']['transitorios']='';self.assertRaises(ValueError,validar,i)
  def test_cne_structure_and_existing_publication_preserved(self):
   with tempfile.TemporaryDirectory() as folder:
-   root=Path(folder);root.joinpath('index.html').write_text((ROOT/'index.html').read_text());root.joinpath('expediente-001.html').write_bytes((ROOT/'expediente-001.html').read_bytes())
+   root=Path(folder);root.joinpath('index.html').write_text((ROOT/'index.html').read_text());root.joinpath('observatorio.html').write_text((ROOT/'observatorio.html').read_text());root.joinpath('expediente-001.html').write_bytes((ROOT/'expediente-001.html').read_bytes())
+   portal=root.joinpath('index.html').read_bytes()
    original=root.joinpath('expediente-001.html').read_bytes();i=fixture();ack=root/'ack.json'
    publicar({'schema':1,'items':[i]},root,ack)
    p=root/'publicaciones/dof/expediente-5802463-v2.html';s=p.read_text()
    for heading in ['¿Qué cambia?','Antecedentes verificables','Transitorios que requieren atención','Implicaciones evaluadas por fonzeka®','Evidencia y estado de revisión']:self.assertIn(heading,s)
    self.assertEqual(original,root.joinpath('expediente-001.html').read_bytes())
-   self.assertIn('expediente-001.html',root.joinpath('index.html').read_text())
+   self.assertIn('expediente-001.html',root.joinpath('observatorio.html').read_text())
+   self.assertIn('publicaciones/dof/expediente-5802463-v2.html',root.joinpath('observatorio.html').read_text())
+   self.assertIn('../../observatorio.html',p.read_text())
    publicar({'schema':1,'items':[i]},root,ack)
-   self.assertEqual(root.joinpath('index.html').read_text().count('FONZEKA_APROBADOS_INICIO'),1)
+   self.assertEqual(root.joinpath('observatorio.html').read_text().count('FONZEKA_APROBADOS_INICIO'),1)
+   self.assertEqual(portal,root.joinpath('index.html').read_bytes())
  def test_packager_excludes_private_files(self):
   with tempfile.TemporaryDirectory() as folder:
    root=Path(folder)/'source';out=Path(folder)/'out';root.mkdir()
-   for name in ['index.html','expediente-001.html','logo-fonzeka.png','icono.png','monitor-dof/index.html']:
+   for name in ['index.html','observatorio.html','expediente-001.html','logo-fonzeka.png','icono.png','cronologia-electrica-2024-2026.pdf','proyecto-oasis.pdf','monitor-dof/index.html','proyectos-mixtos/index.html','proyectos-mixtos/data/proyectos.json','proyectos-mixtos/data/proyectos.csv','proyectos-mixtos/data/fuentes.json','proyectos-mixtos/data/fuentes.csv','proyectos-mixtos/data/plan-expansion-2026-2030.json','proyectos-mixtos/data/plan-expansion-2026-2030.csv']:
     p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('publico')
    (root/'datos-privados.json').write_text('privado');empaquetar(root,out)
    self.assertFalse((out/'datos-privados.json').exists())
+   self.assertTrue((out/'observatorio.html').exists())
 
 if __name__=='__main__':unittest.main()
