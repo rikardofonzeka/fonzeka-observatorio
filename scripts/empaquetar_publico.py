@@ -8,6 +8,7 @@ from pathlib import Path
 def empaquetar(root, output):
     names = [
         'index.html',
+        'observatorio.html',
         'expediente-001.html',
         'logo-fonzeka.png',
         'icono.png',

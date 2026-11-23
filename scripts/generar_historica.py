@@ -44,7 +44,7 @@ def generar():
     datos.update(tipo_consulta='RECUPERACION_HISTORICA', procedencia='procedencia.json')
     destacado.update(destacado=True, dependencia='SENER — Secretaría de Energía')
     (DESTINO / 'bandeja.json').write_text(json.dumps(datos, ensure_ascii=False, indent=2) + '\n')
-    intro = ('<nav><a href="../../index.html">Monitor DOF</a></nav><p class="aviso">' + aviso + '</p>'
+    intro = ('<nav><a href="../../monitor-dof/index.html">Monitor DOF</a></nav><p class="aviso">' + aviso + '</p>'
              '<p>Consulta original UTC: ' + estado['consulta_utc'] + '.<br>Integración histórica UTC: ' + procedencia['fecha_integracion_utc'] + '.</p>'
              '<p><a href="procedencia.json">Procedencia y huellas</a> · <a href="bandeja.json">Datos JSON</a> · <a href="bandeja.md">Markdown</a></p>')
     pagina = (originales / 'bandeja.html').read_text()

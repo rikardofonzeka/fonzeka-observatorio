@@ -68,7 +68,7 @@ jobs:
           if [[ "$CANTIDAD" != "0" ]]; then
             git config user.name 'fonzeka-editorial[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add publicaciones/dof index.html
+            git add publicaciones/dof observatorio.html
             if ! git diff --cached --quiet; then
               git commit -m 'docs: publicar fichas autorizadas desde mesa privada'
               git push origin HEAD:main
