@@ -41,10 +41,11 @@ class PublicationTest(unittest.TestCase):
  def test_packager_excludes_private_files(self):
   with tempfile.TemporaryDirectory() as folder:
    root=Path(folder)/'source';out=Path(folder)/'out';root.mkdir()
-   for name in ['index.html','observatorio.html','expediente-001.html','logo-fonzeka.png','icono.png','cronologia-electrica-2024-2026.pdf','proyecto-oasis.pdf','monitor-dof/index.html','proyectos-mixtos/index.html','proyectos-mixtos/data/proyectos.json','proyectos-mixtos/data/proyectos.csv','proyectos-mixtos/data/fuentes.json','proyectos-mixtos/data/fuentes.csv','proyectos-mixtos/data/plan-expansion-2026-2030.json','proyectos-mixtos/data/plan-expansion-2026-2030.csv']:
+   for name in ['index.html','observatorio.html','expediente-001.html','logo-fonzeka.png','fonzeka-vista-previa-linkedin.png','icono.png','cronologia-electrica-2024-2026.pdf','proyecto-oasis.pdf','monitor-dof/index.html','proyectos-mixtos/index.html','proyectos-mixtos/data/proyectos.json','proyectos-mixtos/data/proyectos.csv','proyectos-mixtos/data/fuentes.json','proyectos-mixtos/data/fuentes.csv','proyectos-mixtos/data/plan-expansion-2026-2030.json','proyectos-mixtos/data/plan-expansion-2026-2030.csv']:
     p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('publico')
    (root/'datos-privados.json').write_text('privado');empaquetar(root,out)
    self.assertFalse((out/'datos-privados.json').exists())
    self.assertTrue((out/'observatorio.html').exists())
+   self.assertTrue((out/'fonzeka-vista-previa-linkedin.png').exists())
 
 if __name__=='__main__':unittest.main()
