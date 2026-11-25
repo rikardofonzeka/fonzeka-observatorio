@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from scripts.publico_v2 import card, detail, public_files
+from scripts.integrar_historicos import integrate
 
 def fixture():
     record={'codigo_dof':'1234567','fecha_dof':'2026-11-24','institucion':'SENER','titulo':'Ejemplo ficticio de consulta','tema':'Prueba','resumen':'Contenido de prueba, no publicado.','url_oficial':'https://sidof.segob.gob.mx/notas/1234567'}
@@ -10,6 +11,19 @@ def fixture():
     return record,doc
 
 class PublicContractTest(unittest.TestCase):
+    def test_authorized_history_integration_once_and_no_private_fields(self):
+        record, doc = fixture()
+        with tempfile.TemporaryDirectory() as path:
+            root = Path(path); folder = root/'publicaciones/dof'; folder.mkdir(parents=True)
+            (folder/'catalogo.json').write_text(json.dumps({'schema':2,'expedientes':[]}))
+            queue = {'schema':2,'items':[doc],'blocked':[]}
+            self.assertEqual(integrate(root,queue),1)
+            self.assertEqual(integrate(root,queue),0)
+            with self.assertRaises(ValueError):
+                integrate(root,{'schema':2,'items':[{**doc,'owner_id':'privado'}],'blocked':[]})
+            with self.assertRaises(ValueError):
+                integrate(root,{'schema':2,'items':[doc,doc],'blocked':[]})
+            self.assertEqual(json.loads((folder/'catalogo.json').read_text())['expedientes'],[record])
     def test_valid_projection_and_privacy(self):
         record,doc=fixture();card(record);detail(doc,record)
         with self.assertRaises(ValueError):detail({**doc,'control':{'estado':'autorizado'}},record)
