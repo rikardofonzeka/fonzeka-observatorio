@@ -33,27 +33,65 @@ jobs:
             --data '{}' "$MESA_ORIGIN/api/monitor/sync" -o "$RUNNER_TEMP/sincronizacion.json"
           python scripts/evaluar_monitor.py "$RUNNER_TEMP/sincronizacion.json"
   empaquetar:
-    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     outputs:
       artifact_name: ${{ steps.nombre.outputs.value }}
+      publicar: ${{ steps.integrar.outputs.publicar }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Incorporar expedientes históricos autorizados
+        id: integrar
+        env:
+          MESA_TOKEN: ${{ secrets.FONZEKA_MESA_SERVICE_TOKEN }}
+          MESA_ORIGIN: https://fonzeka-mesa-privada.rikardo-fonzeka.chatgpt.site
+          EVENTO: ${{ github.event_name }}
+        run: |
+          publicar=false
+          if [[ "$EVENTO" != schedule ]]; then publicar=true; fi
+          if [[ -n "$MESA_TOKEN" ]]; then
+            curl --fail --silent --show-error --max-time 180 \
+              -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
+              -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
+              "$MESA_ORIGIN/api/publication/historical" -o "$RUNNER_TEMP/historicos.json"
+            python scripts/integrar_historicos.py "$RUNNER_TEMP/historicos.json"
+            git add publicaciones/dof/
+            if ! git diff --cached --quiet; then
+              git -c user.name='fonzeka editorial' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Integrar expedientes históricos autorizados'
+              git push origin HEAD:main
+              publicar=true
+            fi
+            if [[ "$publicar" == false ]] && ! curl -fsS --max-time 20 'https://rikardofonzeka.github.io/fonzeka-observatorio/publicaciones/dof/catalogo.json' -o "$RUNNER_TEMP/catalogo-live.json"; then
+              publicar=true
+            elif [[ "$publicar" == false ]] && ! cmp -s publicaciones/dof/catalogo.json "$RUNNER_TEMP/catalogo-live.json"; then
+              publicar=true
+            fi
+          fi
+          echo "publicar=$publicar" >> "$GITHUB_OUTPUT"
       - name: Validar y preparar solo archivos públicos
+        if: steps.integrar.outputs.publicar == 'true'
         run: python scripts/empaquetar_publico.py --output "$RUNNER_TEMP/sitio-publico"
       - id: nombre
+        if: steps.integrar.outputs.publicar == 'true'
         run: echo "value=github-pages-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
+        if: steps.integrar.outputs.publicar == 'true'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.integrar.outputs.publicar == 'true'
         with:
           name: ${{ steps.nombre.outputs.value }}
           path: ${{ runner.temp }}/sitio-publico
   desplegar:
     needs: empaquetar
-    if: github.event_name != 'schedule'
+    if: needs.empaquetar.outputs.publicar == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
