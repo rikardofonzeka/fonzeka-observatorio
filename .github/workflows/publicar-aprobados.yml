@@ -19,6 +19,7 @@ jobs:
       MESA_TOKEN: ${{ secrets.FONZEKA_MESA_SERVICE_TOKEN }}
       MESA_ORIGIN: https://fonzeka-mesa-privada.rikardo-fonzeka.chatgpt.site
     steps:
+      - uses: actions/checkout@v4
       - name: Sincronizar índices oficiales con la mesa privada
         run: |
           if [[ -z "$MESA_TOKEN" ]]; then
@@ -30,16 +31,7 @@ jobs:
             -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
             -H 'Content-Type: application/json' \
             --data '{}' "$MESA_ORIGIN/api/monitor/sync" -o "$RUNNER_TEMP/sincronizacion.json"
-          python - <<'PYTHON'
-          import json, os
-          data = json.load(open(os.environ['RUNNER_TEMP']+'/sincronizacion.json'))
-          failures = [r for r in data['results'] if r['status'] != 'OK']
-          print('Consultas DOF:', len(data['results']), '· Pendientes:', len(failures))
-          for row in failures:
-              print('::warning::DOF '+row['day']+': '+row.get('error', 'Consulta pendiente'))
-          if failures:
-              raise SystemExit(1)
-          PYTHON
+          python scripts/evaluar_monitor.py "$RUNNER_TEMP/sincronizacion.json"
   empaquetar:
     if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
