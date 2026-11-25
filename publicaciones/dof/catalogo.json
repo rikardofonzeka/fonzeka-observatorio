@@ -1,4 +1,14 @@
 {
   "schema": 2,
-  "expedientes": []
+  "expedientes": [
+    {
+      "institucion": "CNE",
+      "resumen": "La Comisión publica un instrumento nacional que reúne reglas de comercialización de productos del sector hidrocarburos y establece modalidades de cumplimiento documental, contractual y administrativo. El texto prevé su entrada en vigor al día siguiente; al corte histórico del 5 de noviembre se encuentra publicado, no todavía en vigor. La transición distingue permisos existentes, solicitudes pendientes y nuevos trámites.",
+      "tema": "Comercialización de gas natural, petrolíferos, GLP y petroquímicos",
+      "fecha_dof": "2026-11-05",
+      "codigo_dof": "5803022",
+      "titulo": "CNE: nuevo marco regulatorio de comercialización de hidrocarburos y petrolíferos",
+      "url_oficial": "https://dof.gob.mx/nota_detalle.php?codigo=5803022&fecha=05/11/2026"
+    }
+  ]
 }

@@ -1,0 +1,164 @@
+{
+  "codigo_dof": "5803022",
+  "fecha_dof": "2026-11-05",
+  "institucion": "CNE",
+  "titulo": "CNE: nuevo marco regulatorio de comercialización de hidrocarburos y petrolíferos",
+  "tema": "Comercialización de gas natural, petrolíferos, GLP y petroquímicos",
+  "resumen": "La Comisión publica un instrumento nacional que reúne reglas de comercialización de productos del sector hidrocarburos y establece modalidades de cumplimiento documental, contractual y administrativo. El texto prevé su entrada en vigor al día siguiente; al corte histórico del 5 de noviembre se encuentra publicado, no todavía en vigor. La transición distingue permisos existentes, solicitudes pendientes y nuevos trámites.",
+  "url_oficial": "https://dof.gob.mx/nota_detalle.php?codigo=5803022&fecha=05/11/2026",
+  "tipo": "Acuerdo regulatorio de carácter general",
+  "contexto": "La reforma legal del 18 de marzo de 2025 y su reglamento de octubre de ese año proporcionan el marco previo. El acuerdo de noviembre desarrolla disposiciones administrativas específicas en ese contexto. La exigencia de permiso y la supervisión sectorial no nacen íntegramente con este acuerdo.",
+  "cambio": "La regulación concentra requisitos de actividad y permisos, condiciones administrativas, contratos y un mecanismo electrónico de registro. Introduce un régimen transitorio de adecuación y conserva determinados efectos de permisos y procedimientos anteriores. No debe interpretarse como una cancelación indiscriminada de permisos ni como una nueva tarifa del mercado eléctrico.",
+  "alcance": "Abarca a solicitantes, titulares de permisos de comercialización y otros agentes cuando se ubican en los supuestos del artículo 2. Para compradores finales, la incidencia puede ser contractual; no debe generalizarse a todas las empresas ni a todo el mercado eléctrico.",
+  "vigencia": "prevista · 2026-11-06 · El transitorio Primero establece vigencia al día siguiente de la publicación. Fecha derivada del acto publicado, no conocimiento de acontecimientos posteriores.",
+  "actores": [
+    "Titulares de permisos existentes · Permisos vigentes antes de la entrada en vigor.",
+    "Solicitantes de permisos · Distinguir solicitudes anteriores pendientes y nuevas solicitudes.",
+    "Contrapartes y compradores · Relación contractual con comercializadores en supuestos aplicables.",
+    "Comisión Nacional de Energía · Autoridad emisora y responsable del seguimiento administrativo."
+  ],
+  "analisis": [
+    {
+      "titulo": "Regulación y transición jurídica",
+      "texto": "La entrada en vigor está fijada para el día siguiente a la publicación; las disposiciones incompatibles se derogan, sin que ello identifique automáticamente todas las normas desplazadas. [F1 Transitorios Primero y Segundo]\n\nLos permisos previamente otorgados conservan su vigencia, sujetos al marco y obligaciones aplicables al ejercicio de la actividad. [F1 Transitorio Tercero]\n\nLas solicitudes previas pendientes se resuelven bajo el régimen aplicable a su presentación, con las condiciones transitorias previstas; no se exige repetir válidamente trámites ya realizados por el solo cambio normativo. [F1 Transitorio Cuarto]",
+      "fuentes": [
+        "F1"
+      ]
+    },
+    {
+      "titulo": "Implicaciones contractuales y seguimiento regulatorio",
+      "texto": "El acuerdo establece exigencias documentales y contractuales específicas; el contenido mínimo y el registro se regulan en el capítulo XI. [F1 Artículos 49–50; transitorio Décimo]\n\nLa CNE debe emitir el modelo contractual dentro de 180 días naturales desde la entrada en vigor. Entretanto rigen los requisitos mínimos del acuerdo para los contratos correspondientes; se preserva la validez de determinados modelos previos. [F1 Transitorio Décimo]\n\nLas obligaciones sobre marcas comerciales quedan condicionadas a la regulación que expida la CNE. Al corte histórico no se presume su publicación futura. [F1 Transitorio Noveno]\n\nLa edición oficial incorpora anexos I–X para trámites, modificaciones, avisos y formularios administrativos; el anexo XI contiene el formulario contractual. Se observa que el artículo 50 remite al anexo X para esa estructura, mientras que el transitorio Décimo y el encabezado del anexo XI señalan este último. Se conserva esta diferencia como advertencia documental. [F4 Páginas 44, 48, 49–89 y 90–92; artículo 50, transitorio Décimo, anexos X y XI]",
+      "fuentes": [
+        "F1",
+        "F4"
+      ]
+    },
+    {
+      "titulo": "Gestión de cumplimiento y plazos",
+      "texto": "Los comercializadores disponen de 90 días naturales posteriores a la publicación para la adecuación administrativa prevista, incluidos los medios electrónicos de cumplimiento. [F1 Transitorio Sexto]\n\nEl transitorio Octavo establece 180 días naturales desde la entrada en vigor para presentar documentación aplicable a permisos existentes. El alcance depende de las condiciones del permiso. [F1 Transitorio Octavo]\n\nLos avisos y reportes transitorios tienen condiciones y plazos diferenciados. El transitorio Séptimo combina el periodo de adecuación y un reporte semestral con una referencia temporal que requiere aclaración; no se calcula un vencimiento individual. El Décimo y el Décimo Primero contienen plazos específicos para determinados supuestos, sujetos al calendario aplicable. [F1 Transitorios Séptimo, Décimo y Décimo Primero; F4 Páginas 47–48, transitorios Séptimo, Décimo y Décimo Primero]",
+      "fuentes": [
+        "F1",
+        "F4"
+      ]
+    }
+  ],
+  "acciones": [
+    {
+      "interesado": "Titulares de permisos existentes",
+      "accion": "Clasificar internamente permisos y obligaciones transitorias para definir prioridades.",
+      "tipo": "Recomendación",
+      "condicion": "Según vigencia y régimen del permiso.",
+      "momento": "Desde la fecha de análisis; considerar entrada en vigor prevista.",
+      "evidencia": "Inventario normativo interno y matriz de obligaciones.",
+      "fuentes": [
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Solicitantes de permisos",
+      "accion": "Verificar si la solicitud está sujeta al régimen de transición o a las disposiciones nuevas.",
+      "tipo": "Verificación",
+      "condicion": "Fecha de presentación y situación del trámite.",
+      "momento": "Antes de modificar un expediente administrativo.",
+      "evidencia": "Acuse y documentación del trámite.",
+      "fuentes": [
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Titulares de permisos existentes",
+      "accion": "Preparar adecuación administrativa y evidencia documental de cumplimiento.",
+      "tipo": "Obligación",
+      "condicion": "Cuando corresponda al permiso y supuesto aplicable.",
+      "momento": "90 días posteriores a publicación; 180 días desde entrada en vigor para el supuesto del Octavo.",
+      "evidencia": "Plan interno de cumplimiento y evidencia de presentación.",
+      "fuentes": [
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Titulares de permisos existentes",
+      "accion": "Revisar el contenido contractual aplicable y dar seguimiento al modelo de la CNE.",
+      "tipo": "Recomendación",
+      "condicion": "Distinguir contratos vigentes y nuevos, según transición.",
+      "momento": "Conforme a los transitorios y publicación futura prevista.",
+      "evidencia": "Revisión contractual documentada.",
+      "fuentes": [
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Contrapartes y compradores",
+      "accion": "Revisar con asesoría propia las implicaciones contractuales en su calidad de contraparte.",
+      "tipo": "Recomendación",
+      "condicion": "Relación comprendida en artículo 2.",
+      "momento": "Antes de contratar o modificar acuerdos relevantes.",
+      "evidencia": "Nota de revisión y cláusulas aplicables.",
+      "fuentes": [
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Titulares de permisos existentes",
+      "accion": "Validar calendario y alcance de reportes y avisos aplicables antes de establecer fechas límite individuales.",
+      "tipo": "Verificación",
+      "condicion": "Solo supuestos transitorios pertinentes.",
+      "momento": "Antes de vencimientos correspondientes.",
+      "evidencia": "Calendario oficial y dictamen de aplicabilidad.",
+      "fuentes": [
+        "F1",
+        "F4"
+      ]
+    },
+    {
+      "interesado": "Titulares de permisos existentes",
+      "accion": "Consultar la versión oficial íntegra de los formularios y verificar cuál corresponde al supuesto concreto ante la diferencia de referencias identificada.",
+      "tipo": "Verificación",
+      "condicion": "Cuando se requiera realizar un trámite o registro contractual conforme a las disposiciones.",
+      "momento": "Antes de presentar el trámite o registro.",
+      "evidencia": "Formato oficial aplicable y aclaración institucional si resulta necesaria.",
+      "fuentes": [
+        "F4"
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "id": "F1",
+      "titulo": "Acuerdo CNE de comercialización, edición matutina del DOF",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5803022",
+      "localizador": "Encabezado, considerandos y artículo único; Artículos 1–2; capítulo XI; transitorios Primero, Tercero y Cuarto; Considerandos; Artículos 1–2, 49–50; transitorios Segundo a Quinto, Sexto y Octavo; Artículo 2; artículo 49; Transitorios Primero a Décimo Segundo; Transitorio Primero; Transitorios Primero y Segundo; Transitorio Tercero; Transitorio Cuarto; Artículos 49–50; transitorio Décimo; Transitorio Sexto; Transitorio Octavo; Transitorio Décimo; Transitorios Séptimo, Décimo y Décimo Primero; Transitorio Noveno"
+    },
+    {
+      "id": "F2",
+      "titulo": "Decreto del 18 de marzo de 2025: legislación energética",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5752329",
+      "localizador": "Ley del Sector Hidrocarburos, artículos 76, 80 y 82; Ley de la Comisión Nacional de Energía; Decreto; Ley del Sector Hidrocarburos y Ley de la CNE"
+    },
+    {
+      "id": "F3",
+      "titulo": "Reglamento de la Ley del Sector Hidrocarburos",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5769153",
+      "localizador": "Artículos 95, 108 y 109"
+    },
+    {
+      "id": "F4",
+      "titulo": "Edición matutina oficial del 5 de noviembre de 2026, páginas 16 a 92",
+      "url": "https://sidof.segob.gob.mx/notas/getNewsletter/05-11-2026/Matutina/330645",
+      "localizador": "Páginas 16–92; Páginas 47–48; 49–92; Página 47, transitorio Primero; Páginas 47–48, transitorios Séptimo, Décimo y Décimo Primero; Páginas 44, 48, 49–89 y 90–92; artículo 50, transitorio Décimo, anexos X y XI"
+    }
+  ],
+  "limites": [
+    "Fecha de corte histórica: 2026-11-05. El expediente no incorpora información posterior a ese día.",
+    "Análisis al cierre del 05/11/2026; no acredita hechos posteriores ni la operación real de plataformas en fechas posteriores.",
+    "No sustituye asesoría jurídica particular ni determina el cumplimiento individual de un permiso.",
+    "La edición oficial confirma que el acuerdo ocupa las páginas 16–92 y contiene formularios administrativos e instructivos en los anexos I–XI. Esta síntesis verifica su objeto y las referencias relevantes, sin reproducir cada campo ni sustituir los formatos originales.",
+    "Se identifican discrepancias de redacción en el transitorio Séptimo (periodo semestral y plazo) y entre la remisión del artículo 50 al anexo X y el formulario de contratos identificado como anexo XI. No se fija un vencimiento ni se resuelve por inferencia una discrepancia oficial; interpretar el supuesto individual y confirmar con la CNE cuando corresponda.",
+    "La prioridad empresarial consiste en determinar el régimen aplicable a cada permiso o trámite, revisar la adecuación documental y contractual y programar el cumplimiento con arreglo a los transitorios. No se afirma que cambios normativos posteriores, funcionalidades futuras o medidas pendientes de la Comisión ya hayan ocurrido al corte."
+  ],
+  "pdf_oficial": {
+    "url": "https://sidof.segob.gob.mx/notas/getNewsletter/05-11-2026/Matutina/330645",
+    "tipo": "edicion",
+    "paginas": ""
+  }
+}
