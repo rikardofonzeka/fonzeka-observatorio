@@ -25,7 +25,7 @@ class PublicationTest(unittest.TestCase):
   i=fixture();i['document']['editorial']['transitorios']='';self.assertRaises(ValueError,validar,i)
  def test_cne_structure_and_existing_publication_preserved(self):
   with tempfile.TemporaryDirectory() as folder:
-   root=Path(folder);root.joinpath('index.html').write_text((ROOT/'index.html').read_text());root.joinpath('observatorio.html').write_text((ROOT/'observatorio.html').read_text());root.joinpath('expediente-001.html').write_bytes((ROOT/'expediente-001.html').read_bytes())
+   root=Path(folder);root.joinpath('index.html').write_text('Portal de prueba');root.joinpath('observatorio.html').write_text('<h2 id="titexp">Publicaciones y análisis</h2><a href="expediente-001.html">Expediente previo</a>');root.joinpath('expediente-001.html').write_bytes(b'Expediente previo de prueba')
    portal=root.joinpath('index.html').read_bytes()
    original=root.joinpath('expediente-001.html').read_bytes();i=fixture();ack=root/'ack.json'
    publicar({'schema':1,'items':[i]},root,ack)
@@ -43,8 +43,13 @@ class PublicationTest(unittest.TestCase):
    root=Path(folder)/'source';out=Path(folder)/'out';root.mkdir()
    for name in ['index.html','observatorio.html','expediente-001.html','logo-fonzeka.png','fonzeka-vista-previa-linkedin.png','observatorio-vista-previa.png','icono.png','cronologia-electrica-2024-2026.pdf','proyecto-oasis.pdf','monitor-dof/index.html','proyectos-mixtos/index.html','proyectos-mixtos/data/proyectos.json','proyectos-mixtos/data/proyectos.csv','proyectos-mixtos/data/fuentes.json','proyectos-mixtos/data/fuentes.csv','proyectos-mixtos/data/plan-expansion-2026-2030.json','proyectos-mixtos/data/plan-expansion-2026-2030.csv']:
     p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('publico')
+   public=root/'publicaciones/dof';public.mkdir(parents=True)
+   for name in ['index.html','catalogo.js','catalogo.css','expediente.html','expediente.js']:(public/name).write_text('publico')
+   (public/'catalogo.json').write_text('{"schema":2,"expedientes":[]}')
+   (public/'aprobaciones.json').write_text('privado')
    (root/'datos-privados.json').write_text('privado');empaquetar(root,out)
    self.assertFalse((out/'datos-privados.json').exists())
+   self.assertFalse((out/'publicaciones/dof/aprobaciones.json').exists())
    self.assertTrue((out/'observatorio.html').exists())
    self.assertTrue((out/'fonzeka-vista-previa-linkedin.png').exists())
    self.assertTrue((out/'observatorio-vista-previa.png').exists())

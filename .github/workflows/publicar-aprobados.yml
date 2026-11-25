@@ -1,4 +1,4 @@
-name: Publicar fichas autorizadas
+name: Actualizar monitor y desplegar Observatorio
 on:
   push:
     branches: [main]
@@ -6,36 +6,24 @@ on:
   schedule:
     - cron: '*/5 * * * *'
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
   group: pages
   cancel-in-progress: false
 jobs:
-  publicar:
+  monitor:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    outputs:
-      cantidad: ${{ steps.contenido.outputs.cantidad }}
-      commit: ${{ steps.contenido.outputs.commit }}
-      ack: ${{ steps.contenido.outputs.ack }}
-      artifact_name: ${{ steps.contenido.outputs.artifact_name }}
     env:
       MESA_TOKEN: ${{ secrets.FONZEKA_MESA_SERVICE_TOKEN }}
       MESA_ORIGIN: https://fonzeka-mesa-privada.rikardo-fonzeka.chatgpt.site
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
       - name: Sincronizar índices oficiales con la mesa privada
-        continue-on-error: true
         run: |
           if [[ -z "$MESA_TOKEN" ]]; then
             echo '::warning::Sincronización privada pendiente de clave de servicio'
-            exit 1
+            exit 0
           fi
           curl --fail --silent --show-error --max-time 180 \
             -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
@@ -52,75 +40,34 @@ jobs:
           if failures:
               raise SystemExit(1)
           PYTHON
-      - name: Obtener exclusivamente versiones aprobadas y enviadas
-        run: |
-          if [[ -n "$MESA_TOKEN" ]]; then
-            curl --fail --silent --show-error --max-time 120 \
-              -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
-              -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
-              "$MESA_ORIGIN/api/publication/queue" -o "$RUNNER_TEMP/cola.json"
-          else
-            echo 'Puente pendiente de configuración; solo se despliega contenido público existente'
-            echo '{"schema":1,"items":[]}' > "$RUNNER_TEMP/cola.json"
-          fi
-          python scripts/publicar_aprobados.py --queue "$RUNNER_TEMP/cola.json" --ack "$RUNNER_TEMP/ack.json"
-      - name: Incorporar únicamente las fichas autorizadas
-        id: contenido
-        run: |
-          CANTIDAD="$(python -c 'import json,os; print(len(json.load(open(os.environ["RUNNER_TEMP"]+"/ack.json"))["keys"]))')"
-          echo "cantidad=$CANTIDAD" >> "$GITHUB_OUTPUT"
-          echo "artifact_name=github-pages-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
-          python -c 'import json,os; print("ack="+json.dumps(json.load(open(os.environ["RUNNER_TEMP"]+"/ack.json")),separators=(",",":")))' >> "$GITHUB_OUTPUT"
-          if [[ "$CANTIDAD" != "0" ]]; then
-            git config user.name 'fonzeka-editorial[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add publicaciones/dof observatorio.html
-            if ! git diff --cached --quiet; then
-              git commit -m 'docs: publicar fichas autorizadas desde mesa privada'
-              git push origin HEAD:main
-            fi
-          fi
-          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-      - name: Preparar solo archivos públicos
-        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
-        run: python scripts/empaquetar_publico.py --output "$RUNNER_TEMP/sitio-publico"
-      - uses: actions/configure-pages@v5
-        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
-      - uses: actions/upload-pages-artifact@v3
-        if: steps.contenido.outputs.cantidad != '0' || github.event_name != 'schedule'
+  empaquetar:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      artifact_name: ${{ steps.nombre.outputs.value }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          name: ${{ steps.contenido.outputs.artifact_name }}
+          python-version: '3.12'
+      - name: Validar y preparar solo archivos públicos
+        run: python scripts/empaquetar_publico.py --output "$RUNNER_TEMP/sitio-publico"
+      - id: nombre
+        run: echo "value=github-pages-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          name: ${{ steps.nombre.outputs.value }}
           path: ${{ runner.temp }}/sitio-publico
   desplegar:
-    needs: publicar
-    if: needs.publicar.outputs.cantidad != '0' || github.event_name != 'schedule'
+    needs: empaquetar
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      MESA_TOKEN: ${{ secrets.FONZEKA_MESA_SERVICE_TOKEN }}
-      MESA_ORIGIN: https://fonzeka-mesa-privada.rikardo-fonzeka.chatgpt.site
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
         with:
-          artifact_name: ${{ needs.publicar.outputs.artifact_name }}
-      - name: Confirmar publicación tras despliegue exitoso
-        if: needs.publicar.outputs.cantidad != '0'
-        env:
-          COMMIT_PUBLICO: ${{ needs.publicar.outputs.commit }}
-          ACK_JSON: ${{ needs.publicar.outputs.ack }}
-        run: |
-          python - <<'PY'
-          import json,os
-          path=os.environ['RUNNER_TEMP']+'/ack.json'
-          d=json.loads(os.environ['ACK_JSON']);d['commit_url']='https://github.com/rikardofonzeka/fonzeka-observatorio/commit/'+os.environ['COMMIT_PUBLICO']
-          open(path,'w').write(json.dumps(d))
-          PY
-          curl --fail --silent --show-error --max-time 120 \
-            -H "OAI-Sites-Authorization: Bearer $MESA_TOKEN" \
-            -H "X-Fonzeka-Publisher-Key: $MESA_TOKEN" \
-            -H 'Content-Type: application/json' \
-            --data-binary "@$RUNNER_TEMP/ack.json" \
-            "$MESA_ORIGIN/api/publication/ack"
+          artifact_name: ${{ needs.empaquetar.outputs.artifact_name }}
