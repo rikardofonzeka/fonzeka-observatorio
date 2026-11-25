@@ -2,36 +2,18 @@
 
 Sitio público del Observatorio Inteligente del Sector Eléctrico Mexicano | fonzeka® Insights.
 
-## Separación editorial
+## Catálogo público del DOF
 
-Este repositorio se destina a contenidos autorizados para consulta pública.
-Las detecciones, bandejas preliminares, evidencias y revisiones manuales se gestionan
-en el espacio privado. No se publican automáticamente por haber pasado una validación técnica.
-Una publicación requiere autorización editorial expresa con documento, versión,
-responsable y fecha. Los scripts que permanezcan aquí son código de referencia,
-no una autorización para publicar sus resultados.
+Los expedientes se ofrecen en un catálogo único (publicaciones y análisis, monitor y página del Observatorio). El catálogo `publicaciones/dof/catalogo.json` utiliza el esquema 2 y comienza vacío; las fichas de pruebas anteriores se retiran de la publicación. La ruta estable de cada expediente es `publicaciones/dof/expediente.html?codigo=<código DOF>`. Cada ficha tendrá un archivo público `expediente-<código>.json`.
 
-Se retiraron de la versión actual las bandejas y datos de revisión del 29 y 30 de
-octubre de 2026, conservados en el repositorio privado con manifiesto de huellas.
-Se retiró el workflow de consulta del repositorio público; su continuidad se gestiona
-en el privado sin pasos de publicación pública. No se reescribió el historial Git:
-las versiones que ya fueron públicas siguen siendo recuperables en commits anteriores.
+El contrato público excluye prompts, observaciones internas, aprobaciones, versiones y datos de la mesa privada. `scripts/publico_v2.py` valida el catálogo y la correspondencia con cada expediente. `scripts/empaquetar_publico.py` despliega solo los archivos explícitamente permitidos. No incluye bandejas, historial, manifiestos de aprobación antiguos ni expedientes de prueba.
 
-## Publicación desde la mesa privada
+## Separación editorial y transición
 
-El receptor `publicar-aprobados.yml` consulta exclusivamente versiones aprobadas y
-expresamente enviadas. Requiere el secreto Actions `FONZEKA_MESA_SERVICE_TOKEN` y
-GitHub Pages configurado con origen GitHub Actions. Nunca incluye la bandeja ni el
-historial privado en el artefacto público: `empaquetar_publico.py` usa una lista
-explícita de archivos autorizados.
+La mesa privada recibe y analiza las publicaciones. Detectar una publicación no equivale a autorizarla ni publicarla. El monitor de índices oficiales continúa sincronizándose con la mesa privada mediante el puente de servicio existente.
 
-Las nuevas fichas usan la estructura de `expediente-001.html`: resumen, cambios,
-antecedentes, transitorios, implicaciones y evidencia. La plantilla se conserva en
-`scripts/publication-template.json`; su huella forma parte de cada aprobación.
-El expediente CNE original no se modifica. Cada versión nueva tiene una ruta propia.
-Los responsables de aprobación y motivos internos permanecen en la mesa privada.
+El receptor de fichas del esquema antiguo queda desactivado para evitar que se reincorporen análisis de prueba. La nueva salida no recibirá resultados de la mesa privada hasta que el mecanismo de autorización independiente y el puente del nuevo contrato estén implementados y probados. Los cambios en la lista pública se desplegarán por GitHub Pages a partir del catálogo autorizado.
 
-La cola se incorpora con commit y despliegue explícito de Pages. Solo se confirma
-PUBLICADO tras completar el despliegue. Las ejecuciones programadas vacías no
-modifican contenido ni despliegan. Sin secreto, únicamente los eventos de push/manual
-pueden desplegar la versión pública existente; no se obtiene material privado.
+Los scripts antiguos se conservan únicamente como referencia interna de migración y no se ejecutan en el despliegue de la nueva salida pública. El historial de Git no se reescribe.
+
+No se modifica el portal institucional ni sus recursos ajenos al DOF. La antigua liga del expediente 001 redirige al catálogo.

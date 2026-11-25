@@ -3,6 +3,10 @@ import argparse
 import json
 import shutil
 from pathlib import Path
+try:
+    from .publico_v2 import public_files
+except ImportError:
+    from publico_v2 import public_files
 
 
 def empaquetar(root, output):
@@ -26,19 +30,7 @@ def empaquetar(root, output):
         'proyectos-mixtos/data/plan-expansion-2026-2030.csv',
     ]
 
-    folder = root / 'publicaciones/dof'
-    manifest = folder / 'aprobaciones.json'
-
-    if manifest.exists():
-        names += [
-            'publicaciones/dof/index.html',
-            'publicaciones/dof/aprobaciones.json',
-        ]
-        for entry in json.loads(manifest.read_text()):
-            name = entry['archivo']
-            if Path(name).name != name or not name.endswith('.html'):
-                raise ValueError('Ruta pública no permitida')
-            names.append('publicaciones/dof/' + name)
+    names += public_files(root)
 
     for name in names:
         source = root / name
