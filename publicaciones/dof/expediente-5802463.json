@@ -1,0 +1,175 @@
+{
+  "codigo_dof": "5802463",
+  "fecha_dof": "2026-10-29",
+  "institucion": "SENER",
+  "titulo": "SENER amplía hasta marzo de 2027 el registro de proyectos estratégicos de almacenamiento eléctrico",
+  "tema": "Convocatoria de proyectos estratégicos de almacenamiento y generación eléctrica",
+  "resumen": "SENER extiende la etapa de registro de almacenamiento hasta el 1 de marzo de 2027; el plazo anterior terminaba el 30 de octubre de 2026. El acuerdo no amplía el plazo de generación y entra en vigor el 29 de octubre.",
+  "url_oficial": "https://dof.gob.mx/nota_detalle.php?codigo=5802463&fecha=29/10/2026",
+  "tipo": "Acuerdo modificatorio",
+  "contexto": "La convocatoria del 15 de mayo establece atención prioritaria de permisos y estudios para proyectos estratégicos bajo esquemas con CFE. Fue modificada el 26 de mayo, 10 de julio y 2 de septiembre. La cuarta modificación busca ampliar concurrencia y favorecer la coordinación técnica y eficiencia administrativa.",
+  "cambio": "Se modifican exclusivamente la fracción II del numeral 3.1 y la etapa 2 del numeral 17.1: calendario de 2026 y 2027, días hábiles salvo indicación expresa de naturales, y periodo de almacenamiento del 2 de junio de 2026 al 1 de marzo de 2027. La tercera modificación había fijado el cierre de generación el 2 de septiembre y el de almacenamiento el 30 de octubre de 2026.",
+  "alcance": "La prórroga se refiere al registro de manifestaciones de interés de almacenamiento y solicitudes de estudios de conexión. No implica permisos concedidos, contratos suscritos, capacidad adjudicada ni modificación automática de requisitos técnicos o económicos.",
+  "vigencia": "confirmada · 2026-10-29 · Publicación en el DOF; firma el 26 de octubre de 2026.",
+  "actores": [
+    "Secretaría de Energía · Emisora y coordinación de planeación.",
+    "Solicitantes de almacenamiento · Proyectos elegibles conforme a convocatoria.",
+    "Solicitantes de generación · La fecha de generación no es modificada por este acuerdo.",
+    "Comisión Federal de Electricidad · Esquemas de asociación previstos en convocatoria.",
+    "Comisión Nacional de Energía · Tramitación de permisos conforme al instrumento base.",
+    "Centro Nacional de Control de Energía · Estudios correspondientes conforme al instrumento base."
+  ],
+  "analisis": [
+    {
+      "titulo": "Regulación y vigencia",
+      "texto": "El acuerdo modifica dos disposiciones de la convocatoria, no la sustituye. [F1 Resolutivo único, numeral 3.1 II y etapa 2 del numeral 17.1]\n\nLas fechas abarcan 2026 y 2027 según corresponda; los días son hábiles conforme al artículo 28 de LFPA salvo indicación expresa de naturales. [F1 Resolutivo único, numeral 3.1 II y etapa 2 del numeral 17.1]\n\nVigencia desde publicación el 29 de octubre; firma el 26 de octubre. [F2 Página 49, transitorio único y firma]",
+      "fuentes": [
+        "F1",
+        "F2"
+      ]
+    },
+    {
+      "titulo": "Calendario y desarrollo de proyectos",
+      "texto": "El registro de almacenamiento se extiende del 2 de junio de 2026 al 1 de marzo de 2027; el cierre anterior era el 30 de octubre de 2026. [F1 Resolutivo único, numeral 3.1 II y etapa 2 del numeral 17.1; F3 Resolutivo primero, etapa 2 del numeral 17.1]\n\nLa cuarta modificación no cambia la fecha de cierre de generación fijada en la tercera: 2 de septiembre de 2026. [F1 Resolutivo único, numeral 3.1 II y etapa 2 del numeral 17.1; F3 Resolutivo primero, etapa 2 del numeral 17.1]\n\nLa atención prioritaria no equivale a otorgamiento automático de permisos o contratos; la convocatoria base contempla evaluación y esquemas con CFE. [F4 Numerales 1.1 y 1.2; F1 Considerandos y encabezado]",
+      "fuentes": [
+        "F1",
+        "F3",
+        "F4"
+      ]
+    },
+    {
+      "titulo": "Planeación y alcance sectorial",
+      "texto": "El objetivo declarado es mejorar concurrencia, coordinación, costos de particulares y eficiencia administrativa; no acredita resultados efectivos. [F1 Considerandos y encabezado]\n\nLa atención prioritaria no equivale a otorgamiento automático de permisos o contratos; la convocatoria base contempla evaluación y esquemas con CFE. [F4 Numerales 1.1 y 1.2; F1 Considerandos y encabezado]",
+      "fuentes": [
+        "F1",
+        "F4"
+      ]
+    }
+  ],
+  "acciones": [
+    {
+      "interesado": "Solicitantes de almacenamiento",
+      "accion": "Verificar elegibilidad y preparar registro y solicitud de estudios aplicables.",
+      "tipo": "Recomendación",
+      "condicion": "Si pretende participar en almacenamiento bajo convocatoria.",
+      "momento": "Dentro del periodo que termina el 1 de marzo de 2027.",
+      "evidencia": "Acuse oficial de registro y documentación aplicable.",
+      "fuentes": [
+        "F1",
+        "F3",
+        "F4"
+      ]
+    },
+    {
+      "interesado": "Solicitantes de generación",
+      "accion": "No interpretar la prórroga de almacenamiento como reapertura de generación.",
+      "tipo": "Verificación",
+      "condicion": "Si participa en generación.",
+      "momento": "Al corte del 29 de octubre.",
+      "evidencia": "Calendario de tercera y cuarta modificaciones.",
+      "fuentes": [
+        "F1",
+        "F3"
+      ]
+    },
+    {
+      "interesado": "Secretaría de Energía",
+      "accion": "Dar seguimiento a la aplicación del calendario actualizado y la concurrencia de propuestas.",
+      "tipo": "Recomendación",
+      "condicion": "En el ámbito de sus funciones.",
+      "momento": "Durante la etapa ampliada.",
+      "evidencia": "Resultados oficiales y calendario.",
+      "fuentes": [
+        "F1",
+        "F3"
+      ]
+    },
+    {
+      "interesado": "Comisión Federal de Electricidad",
+      "accion": "Distinguir manifestaciones de interés de proyectos con asociación formalizada.",
+      "tipo": "Verificación",
+      "condicion": "Propuestas bajo esquemas con CFE.",
+      "momento": "Durante evaluación y formalización.",
+      "evidencia": "Instrumentos y resultados oficiales aplicables.",
+      "fuentes": [
+        "F4",
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Comisión Nacional de Energía",
+      "accion": "Distinguir registro de solicitud y resolución de permiso.",
+      "tipo": "Verificación",
+      "condicion": "Solicitudes que avancen al trámite correspondiente.",
+      "momento": "En etapas aplicables.",
+      "evidencia": "Resolución oficial de permiso.",
+      "fuentes": [
+        "F4",
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Centro Nacional de Control de Energía",
+      "accion": "Verificar la recepción y resultado de estudios correspondientes sin inferir aprobación del proyecto.",
+      "tipo": "Verificación",
+      "condicion": "Solicitudes aplicables.",
+      "momento": "En etapas de estudios.",
+      "evidencia": "Acuses y resultados oficiales.",
+      "fuentes": [
+        "F4",
+        "F1"
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "id": "F1",
+      "titulo": "Acuerdo por el que se emite la cuarta modificación a la Convocatoria para la atención de proyectos estratégicos de generación y almacenamiento de energía eléctrica, alineados a la planeación vinculante.",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5802463",
+      "localizador": "Considerandos y encabezado; Resolutivo único, numeral 3.1 II y etapa 2 del numeral 17.1"
+    },
+    {
+      "id": "F2",
+      "titulo": "DOF edición matutina, página 49",
+      "url": "https://sidof.segob.gob.mx/notas/getNewsletter/29-10-2026/Matutina/330505",
+      "localizador": "Página 49, transitorio único y firma"
+    },
+    {
+      "id": "F3",
+      "titulo": "Tercera modificación de la convocatoria",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5797703",
+      "localizador": "Resolutivo primero, etapa 2 del numeral 17.1"
+    },
+    {
+      "id": "F4",
+      "titulo": "Convocatoria original",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5787666",
+      "localizador": "Numerales 1.1 y 1.2"
+    },
+    {
+      "id": "F5",
+      "titulo": "Primera modificación",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5788508",
+      "localizador": "Encabezado"
+    },
+    {
+      "id": "F6",
+      "titulo": "Segunda modificación",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5793261",
+      "localizador": "Encabezado"
+    }
+  ],
+  "limites": [
+    "Fecha de corte histórica: 2026-10-29. El expediente no incorpora información posterior a ese día.",
+    "Análisis histórico al 29 de octubre de 2026; no incorpora actos posteriores.",
+    "No se reconstruye exhaustivamente el texto consolidado de todos los requisitos; se limita a cambios expresos del acto y calendario anterior.",
+    "No acredita proyectos aprobados, inversiones, capacidad adjudicada ni resultados posteriores. No se calcula un número de días hábiles adicionales.",
+    "Huellas SHA-256 calculadas sobre los seis archivos aportados por el propietario, descargados de las URL oficiales indicadas; cotejo independiente de bytes con las huellas mostradas en su terminal. No constituyen firma digital de la autoridad.",
+    "La ampliación abre una ventana adicional de preparación y evaluación de proyectos de almacenamiento, sin acreditar su ejecución. La generación conserva el calendario previo en lo que este acto no modifica. El efecto material deberá comprobarse mediante resultados oficiales de las etapas correspondientes."
+  ],
+  "pdf_oficial": {
+    "url": "https://sidof.segob.gob.mx/notas/getNewsletter/29-10-2026/Matutina/330505",
+    "tipo": "edicion",
+    "paginas": ""
+  }
+}
