@@ -21,6 +21,7 @@ def empaquetar(root, output):
         'cronologia-electrica-2024-2026.pdf',
         'proyecto-oasis.pdf',
         'chicoasen-ii/chicoasen-ii-expediente.pdf',
+        'publicaciones/panorama-social-alc-2026.html',
         'monitor-dof/index.html',
         'proyectos-mixtos/index.html',
         'proyectos-mixtos/data/proyectos.json',
