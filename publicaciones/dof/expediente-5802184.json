@@ -1,0 +1,122 @@
+{
+  "codigo_dof": "5802184",
+  "fecha_dof": "2026-10-27",
+  "institucion": "CNE",
+  "titulo": "CNE inicia revisión administrativa de 132 permisos de comercialización",
+  "tema": "Caducidad administrativa de permisos de comercialización",
+  "resumen": "La CNE inicia procedimientos administrativos respecto de 132 permisos de comercialización del sector hidrocarburos. La publicación acredita el inicio y la posibilidad de audiencia, no una declaración definitiva de caducidad. Al corte del 27 de octubre de 2026 no se acredita una resolución individual posterior.",
+  "url_oficial": "https://dof.gob.mx/nota_detalle.php?codigo=5802184&fecha=27/10/2026",
+  "tipo": "Acuerdo de inicio de procedimiento administrativo",
+  "contexto": "La Ley del Sector Hidrocarburos prevé causas de caducidad de permisos; el reglamento exige audiencia previa a su declaración. El acuerdo se ubica en el marco institucional establecido por la reforma energética de marzo de 2025. La Comisión distingue sus indicios preliminares de la decisión individual que requiere el procedimiento.",
+  "cambio": "El acto aplica el marco normativo preexistente a procedimientos identificados en su listado. No modifica por sí mismo las reglas generales ni acredita la pérdida de derechos. La autoridad debe valorar el expediente y comunicar la resolución que corresponda.",
+  "alcance": "El alcance directo se limita a los titulares comprendidos en el acuerdo y a la autoridad competente. Para otros agentes del sector, la relevancia es documental: verificar individualmente la situación jurídica de sus relaciones comerciales, sin extrapolar el procedimiento ni presumir un cambio general de condiciones del mercado.",
+  "vigencia": "confirmada · 2026-10-27 · El acuerdo surte efectos desde su publicación; no implica una resolución individual de caducidad.",
+  "actores": [
+    "Titulares de permisos comprendidos en el acto · Solo los expedientes individualizados por la autoridad.",
+    "Comisión Nacional de Energía · Autoridad responsable del procedimiento y resolución.",
+    "Contrapartes comerciales · Cuando mantengan una relación con titulares considerados en el acto."
+  ],
+  "analisis": [
+    {
+      "titulo": "Alcance normativo y naturaleza del procedimiento",
+      "texto": "El acuerdo dispone el inicio de procedimientos para 132 permisos; no declara su caducidad definitiva. [F1 Resolutivos Primero y Cuarto; F4 Páginas 29–36]\n\nEl inicio del procedimiento se vincula con una hipótesis legal existente; el acto no equivale a una reforma general del régimen de permisos. [F2 Artículos 87–88 de la Ley del Sector Hidrocarburos; F1 Considerandos y resolutivo Primero]\n\nEl acuerdo produce efectos desde su publicación; no acredita una decisión final posterior ni permite concluir la situación actual de un permiso. [F1 Transitorio único y resolutivo Cuarto]",
+      "fuentes": [
+        "F1",
+        "F4",
+        "F2"
+      ]
+    },
+    {
+      "titulo": "Garantía de audiencia y trazabilidad",
+      "texto": "La autoridad debe respetar la audiencia previa y valorar los elementos de cada expediente antes de resolver. [F3 Artículo 330; F1 Resolutivos Segundo y Cuarto]\n\nLos titulares cuentan con oportunidad procesal para presentar manifestaciones, pruebas y alegatos, conforme a las condiciones y notificaciones aplicables al caso individual. [F1 Resolutivos Segundo y Tercero; F4 Páginas 35–36]",
+      "fuentes": [
+        "F3",
+        "F1",
+        "F4"
+      ]
+    },
+    {
+      "titulo": "Implicaciones comerciales condicionadas",
+      "texto": "Es razonable revisar las relaciones comerciales pertinentes sobre la base de documentación individual actualizada, sin considerar este acto como una cancelación colectiva. [F1 Resolutivos Primero y Cuarto]",
+      "fuentes": [
+        "F1"
+      ]
+    }
+  ],
+  "acciones": [
+    {
+      "interesado": "Titulares de permisos comprendidos en el acto",
+      "accion": "Revisar la notificación aplicable y preservar la documentación auténtica de su expediente; obtener asesoría jurídica individual si procede.",
+      "tipo": "Recomendación",
+      "condicion": "Titular comprendido en el acuerdo.",
+      "momento": "Durante la revisión administrativa, según la notificación que corresponda.",
+      "evidencia": "Expediente y comunicaciones oficiales.",
+      "fuentes": [
+        "F1",
+        "F4"
+      ]
+    },
+    {
+      "interesado": "Comisión Nacional de Energía",
+      "accion": "Garantizar audiencia y emitir la resolución individual fundada conforme al procedimiento aplicable.",
+      "tipo": "Obligación",
+      "condicion": "Cada asunto incluido en el acto.",
+      "momento": "Antes de la resolución definitiva.",
+      "evidencia": "Constancias del procedimiento y resolución comunicada.",
+      "fuentes": [
+        "F3",
+        "F1"
+      ]
+    },
+    {
+      "interesado": "Contrapartes comerciales",
+      "accion": "Verificar documentalmente el estado particular de los permisos pertinentes sin presumir su caducidad.",
+      "tipo": "Verificación",
+      "condicion": "Relación comercial vinculada a un expediente identificado.",
+      "momento": "Antes de adoptar decisiones basadas en la situación regulatoria.",
+      "evidencia": "Registro y resolución oficial aplicable.",
+      "fuentes": [
+        "F1"
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "id": "F1",
+      "titulo": "Acuerdo CNE del 27 de octubre de 2026",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5802184",
+      "localizador": "Encabezado, acuerdo del Comité Técnico citado y firma; Resolutivos Primero a Cuarto y transitorio único; Considerandos; Resolutivos Primero, Segundo y Cuarto; Resolutivos Primero y Cuarto; Resolutivos Segundo a Cuarto; Transitorio único; Resolutivos Segundo y Cuarto; Considerandos y resolutivo Primero; Resolutivos Segundo y Tercero; Transitorio único y resolutivo Cuarto"
+    },
+    {
+      "id": "F2",
+      "titulo": "Decreto por el que se expide la Ley del Sector Hidrocarburos y otras leyes",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5752329",
+      "localizador": "Ley del Sector Hidrocarburos, artículos 87 y 88; Ley del Sector Hidrocarburos, artículos 87–88; Artículos 87–88 de la Ley del Sector Hidrocarburos"
+    },
+    {
+      "id": "F3",
+      "titulo": "Reglamento de la Ley del Sector Hidrocarburos",
+      "url": "https://sidof.segob.gob.mx/notas/docFuente/5769153",
+      "localizador": "Artículo 330"
+    },
+    {
+      "id": "F4",
+      "titulo": "Edición matutina del DOF del 27 de octubre de 2026, páginas 27–36",
+      "url": "https://sidof.segob.gob.mx/notas/getNewsletter/27-10-2026/Matutina/330465",
+      "localizador": "Páginas 27 y 36; Páginas 27–36; Páginas 29–36; Página 36; Páginas 35–36"
+    }
+  ],
+  "limites": [
+    "Fecha de corte histórica: 2026-10-27. El expediente no incorpora información posterior a ese día.",
+    "Corte histórico: 27 de octubre de 2026; no se incorporan hechos, decisiones o fuentes posteriores.",
+    "No se reproducen nombres particulares, números individuales de permisos, patrones de actividad ni detalles no necesarios para el análisis regulatorio; se remite al documento oficial.",
+    "Se leyó el texto oficial, se contrastaron el inicio y cierre del acuerdo en la edición digitalizada, y se comprobó el fundamento material de la legislación y reglamento pertinentes. No se revisaron expedientes individuales ni se calculan fechas de vencimiento particulares.",
+    "Síntesis informativa, no dictamen jurídico ni evidencia de resolución final.",
+    "Los interesados deben distinguir apertura, audiencia y resolución final. Conviene preservar evidencia auténtica, revisar las comunicaciones oficiales y contar con asesoría jurídica individual cuando corresponda. No puede inferirse la cancelación, modificación o vigencia actual de un permiso a partir de este acto inicial."
+  ],
+  "pdf_oficial": {
+    "url": "https://sidof.segob.gob.mx/notas/getNewsletter/27-10-2026/Matutina/330465",
+    "tipo": "edicion",
+    "paginas": ""
+  }
+}
